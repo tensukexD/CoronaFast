@@ -1,0 +1,18 @@
+#Clonar proyecto de github:
+git clone https://github.com/tensukexD/CoronaFast.git
+
+-------------------------------------------------------
+#Comandos para pullear(SIEMPRE has un pull antes de empezar a trabajar):
+git pull
+
+-------------------------------------------------------
+
+#Comandos para pushear:
+Actualiza en tu pc:
+git add -A
+
+Commitea (Las notas de lo que hayas actualizado ponlo en "actualizado"):
+git commit -m "actualizado"
+
+Para mandar al servidor:
+git push
