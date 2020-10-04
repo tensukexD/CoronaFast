@@ -19,7 +19,7 @@ import edu.ulima.prueba.repository.TiendaRepository;
 
 
 @RestController
-@RequestMapping("/revisarTienda/{id}")
+@RequestMapping("/revisarTienda")
 public class ControladorTienda {
     private TiendaRepository lRepository;
 
@@ -39,7 +39,7 @@ public ResponseEntity<List<Tienda>> listarUsuarios( UriComponentsBuilder uri){
     }
     
 
-@RequestMapping(value="/tiendas/agregar",method=RequestMethod.POST)
+@RequestMapping(value="tiendas/agregar",method=RequestMethod.POST)
 public ResponseEntity<Void> agregarUsuario(@RequestBody Tienda newTienda,
                                             UriComponentsBuilder uri){
 
@@ -57,11 +57,11 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Tienda newTienda,
  
 
 
- @RequestMapping(value="tiendas/actualizar/{id}", method=RequestMethod.PUT)
+ @RequestMapping(value="tienda/actualizar/{id}", method=RequestMethod.PUT)
  public ResponseEntity<Tienda> editarUsuarios(@PathVariable("id") Long id,
                                                   @RequestBody Tienda tienda){
      Tienda current=null;
-     Optional<Tienda> l=lRepository.findById(id);
+     Optional<Tienda> l=lRepository.findByIdUsuario(id);
      
 
     System.out.println(id);
@@ -86,7 +86,7 @@ public ResponseEntity<Void> eliminarUsuarios(@PathVariable("id") Long id){
 }
     
 @RequestMapping(value="tienda/seleccionar/{id}",method=RequestMethod.GET)
-public ResponseEntity<Tienda> listarusuarioporid(@PathVariable("id") Long id){
+public ResponseEntity<Tienda> listarTiendaId(@PathVariable("id") Long id){
     Tienda current=null;
     Optional<Tienda> l =lRepository.findById(id);
     current=l.get();

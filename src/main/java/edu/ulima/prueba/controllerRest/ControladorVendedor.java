@@ -91,7 +91,22 @@ public ResponseEntity<Vendedor> listarusuarioporid(@PathVariable("id") Long id){
         
     return new ResponseEntity<Vendedor>(current, HttpStatus.OK);
     }
+
+@RequestMapping(value="vendedores/seleccionarEmail/{email}",method=RequestMethod.GET)
+public ResponseEntity<Vendedor> findUsuarioByEmail(@PathVariable("email") String email){
+    Vendedor current=null;
+    Optional<Vendedor> l = lRepository.findByEmail(email);
+    current=l.get();
+
+    //HttpHeaders headers=new HttpHeaders();
+    //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
+        
+    return new ResponseEntity<Vendedor>(current, HttpStatus.OK);
+    }
+
 }
+
+
 
 /*@RequestMapping(value="usuarios/mostrar/{estado}",method=RequestMethod.GET)
 public ResponseEntity<List<Vendedor>> ListarUsuariosporEstado(@PathVariable("estado") String estado){
