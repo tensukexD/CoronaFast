@@ -25,20 +25,23 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
 							</div>
-							<input type="text" name="razonSocial" class="form-control input_user" placeholder="Ingrese su Razon Social">
+							<input type="text" name="razonSocial" class="form-control input_user" required maxlength="32" placeholder="Ingrese su Razon Social">
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
 							</div>
-							<input type="text" name="ruc" class="form-control input_user"  placeholder="Ingrese su RUC">
+							<input type="text" id="ruc" name="ruc" class="form-control input_user"  required pattern="[2]{1}[0]{1}[0-9]{11}" placeholder="Ingrese su RUC (Ej. 20XXXXXXXXXXX)">
+						</div>
+						<div class="alert alert-danger alert-dismissible" style="display: none;" id="alertaRUC">
+							<strong>RUC ya registrado</strong> 
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 							<label for="exampleFormControlSelect1"></label>
-							<select name="distrito" class="form-control" id="eligedistrito">
+							<select name="distrito" class="form-control" required id="eligedistrito">
 							  <option>LaMolina</option><option>LaVictoria</option>
 							  <option>Lurigancho</option><option>Lurín</option><option>MagdalenadelMar</option><option>Miraflores</option><option>Pachacamac</option><option>Pucusana</option><option>PuebloLibre</option><option>PuentePiedra</option><option>PuntaHermosa</option><option>PuntaNegra</option><option>Rimac</option><option>SanBartolo</option><option>SanBorja</option><option>SanMiguel</option><option>SantaAnita</option><option>SantaRosa</option><option>SantiagodeSurco</option><option>Surquillo</option><option>VillaElSalvador</option>
 							  <option>Lima</option>
@@ -50,31 +53,34 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
 							</div>
-							<input type="text" name="nombre" class="form-control input_user"  placeholder="Ingrese su Nombre">
+							<input type="text" name="nombre" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Nombre Completo">
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
 							</div>
-							<input type="text" name="direccion" class="form-control input_user"  placeholder="Ingrese su Direccion">
+							<input type="text" name="direccion" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Direccion">
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-phone"></i></span>
 							</div>
-							<input type="number" name="telefono" class="form-control input_user"  placeholder="Ingrese su celular">
+							<input type="tel" name="telefono" class="form-control input_user"  pattern="[9]{1}[0-9]{8}" required placeholder="Ingrese su celular">
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-at"></i></i></span>
 							</div>
-							<input type="email" name="email" class="form-control input_user" placeholder="Ingrese su correo">
+							<input type="email" id="email" name="email" class="form-control input_user" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Ingrese su correo">
+						</div>
+						<div class="alert alert-danger alert-dismissible" style="display: none;" id="alertaEmail">
+							<strong>Correo ya registrado</strong> 
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="contrasena" class="form-control input_pass" placeholder="Contrase&ntilde;a">
+							<input type="password" name="contrasena" class="form-control input_pass" required minlength="8" maxlength="12" placeholder="Contrase&ntilde;a (8-12 Caracteres)">
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
@@ -84,12 +90,13 @@
 						
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="submit" name="button" class="btn login_btn">Completar registro</button>
+				 	<button type="submit" name="button" id="botonVendedor" class="btn login_btn">Completar registro</button>
 				   </div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="../js/restriccionesVendedor.js"></script>
 </body>
 </html>
