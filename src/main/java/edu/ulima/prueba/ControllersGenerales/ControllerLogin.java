@@ -63,7 +63,7 @@ public class ControllerLogin {
             if(usr.getEmail().equals(usuarioaenviar)){
                 if(usr.getContrasena().equals(Contraenviar)){
                     System.out.println("**********************************NICE **********************************");
-                    return "redirect:/registroComprador/";
+                    return "redirect:/PaginaPrincipalComprador/";
                 }
             }
         }
@@ -84,7 +84,7 @@ public class ControllerLogin {
                 System.out.println("ENTRASTE?");
                 if(usr.getContrasena().equals(Contraenviar)){
                     System.out.println("**********************************NICE **********************************");
-                    return "redirect:/registroVendedor/";
+                    return "redirect:/PaginaPrincipalVendedor/";
                 }
             }
         }

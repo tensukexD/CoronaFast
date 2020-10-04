@@ -15,4 +15,5 @@ public class Comprador extends Usuario {
     private Producto[] carritoCompras;
     private Producto[] listaDeseados;
     private String NombreCompleto;
+    
 }
