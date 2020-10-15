@@ -13,9 +13,18 @@ public class ControllerRegistroSeleccion {
 
     @GetMapping(value="/")
     public String Retornarpag(HttpServletRequest req){
-        
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        String tipo = (String) req.getSession().getAttribute("tipo");
 
-        return "tienda-RegistroEscoger";
+        if(userid == null){
+            return "tienda-RegistroEscoger";
+        }else{
+            if(tipo == "comprador"){
+                return "redirect:/PaginaPrincipalComprador/";
+            }else{
+                return "redirect:/PaginaPrincipalVendedor/";
+            }
+        }
     }
 
     @GetMapping(value="/vendedor")

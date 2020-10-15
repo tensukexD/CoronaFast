@@ -118,34 +118,34 @@
                   <tbody>
                     <tr>
                       <td>Nombre:</td>
-                      <td>Nombre1 Nombre2 Apellido1 Apellido2</td>
+                      <td th:text="${vendedorp.nombre}">???</td>
                     </tr>
                     <tr>
                       <td>Razón Social:</td>
-                      <td>TiendaX</td>
+                      <td th:text="${tiendap.nombreTienda}">???</td>
                     </tr>
                     <tr>
                       <td>RUC:</td>
-                      <td>2092949294502</td>
+                      <td th:text="${tiendap.RUC}">???</td>
                     </tr>
                     <tr>
                       <td>Distrito:</td>
-                      <td>Callao city</td>
+                      <td th:text="${tiendap.distrito}">???</td>
                     </tr>
                     <tr>
                       <td>Celular:</td>
-                      <td>94206969</td>
+                      <td th:text="${tiendap.telefono}">???</td>
                     </tr>
                     <tr>
                       <td>Correo:</td>
-                      <td>PablitoElDeLosPalotes@hotmail.com</td>
+                      <td th:text="${vendedorp.email}">???</td>
                     </tr>
                      
                    
                   </tbody>
                 </table>
                 
-                <a href="#" class="btn btn-primary" style="margin-bottom: 30px;">Editar Datos</a>
+                <a href="/EditarDatosVendedor/" class="btn btn-primary" style="margin-bottom: 30px;">Editar Datos</a>
 
               </div>
             </div>

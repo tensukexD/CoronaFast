@@ -23,9 +23,21 @@ import org.springframework.ui.Model;
 @RequestMapping("/")
 public class ControllerLogin {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getIndex(){
+    public String getIndex(HttpServletRequest req){
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        String tipo = (String) req.getSession().getAttribute("tipo");
+
+        if(userid == null){
+            return "tienda-Loguearse";
+        }else{
+            if(tipo == "comprador"){
+                return "redirect:/PaginaPrincipalComprador/";
+            }else{
+                return "redirect:/PaginaPrincipalVendedor/";
+            }
+        }
+
         
-        return "tienda-Loguearse";
     }
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String Iniciar(String usuarioaenviar,String Contraenviar ,HttpServletRequest req){
@@ -63,6 +75,8 @@ public class ControllerLogin {
             if(usr.getEmail().equals(usuarioaenviar)){
                 if(usr.getContrasena().equals(Contraenviar)){
                     System.out.println("**********************************NICE **********************************");
+                    req.getSession().setAttribute("idingresado", Long.toString(usr.getIdUsuario()));
+                    req.getSession().setAttribute("tipo", "comprador");
                     return "redirect:/PaginaPrincipalComprador/";
                 }
             }
@@ -84,6 +98,8 @@ public class ControllerLogin {
                 System.out.println("ENTRASTE?");
                 if(usr.getContrasena().equals(Contraenviar)){
                     System.out.println("**********************************NICE **********************************");
+                    req.getSession().setAttribute("idingresado", Long.toString(usr.getIdUsuario()));
+                    req.getSession().setAttribute("tipo", "vendedor");
                     return "redirect:/PaginaPrincipalVendedor/";
                 }
             }

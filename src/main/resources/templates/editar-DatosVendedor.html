@@ -107,7 +107,7 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">				 
 				<div class="d-flex justify-content-center form_container" >
-					<form method="POST" action="/registroVendedor/crear">
+					<form method="POST" action="/EditarDatosVendedor/editar">
 						<p><h3>EDITAR DATOS DE VENDEDOR</h3></p>	
 
             <hr>
@@ -115,14 +115,14 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
 							</div>
-							<input type="text" name="razonSocial" class="form-control input_user" required maxlength="32" placeholder="Ingrese su Razon Social">
+							<input type="text" name="razonSocial" class="form-control input_user" required maxlength="32" placeholder="Ingrese su Razon Social" th:value="${tiendap.nombreTienda}">
             </div>
             
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
 							</div>
-							<input type="text" id="ruc" name="ruc" class="form-control input_user"  required pattern="[2]{1}[0]{1}[0-9]{11}" placeholder="Ingrese su RUC (Ej. 20XXXXXXXXXXX)">
+							<input type="text" id="ruc" name="ruc" class="form-control input_user"  required pattern="[2]{1}[0]{1}[0-9]{11}" placeholder="Ingrese su RUC (Ej. 20XXXXXXXXXXX)" th:value="${tiendap.RUC}">
 						</div>
 						<div class="alert alert-danger alert-dismissible" style="display: none;" id="alertaRUC">
 							<strong>RUC ya registrado</strong> 
@@ -133,7 +133,7 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
 							</div>
-							<input type="text" name="nombre" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Nombre Completo">
+							<input type="text" name="nombre" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Nombre Completo" th:value="${vendedorp.nombre}">
             </div>
                         
 						<div class="input-group mb-3">
@@ -141,7 +141,7 @@
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 							<label for="exampleFormControlSelect1"></label>
-							<select name="distrito" class="form-control" required id="eligedistrito">
+							<select name="distrito" class="form-control" required id="eligedistrito" th:value="${tiendap.distrito}">
 							  <option>LaMolina</option><option>LaVictoria</option>
 							  <option>Lurigancho</option><option>Lurín</option><option>MagdalenadelMar</option><option>Miraflores</option><option>Pachacamac</option><option>Pucusana</option><option>PuebloLibre</option><option>PuentePiedra</option><option>PuntaHermosa</option><option>PuntaNegra</option><option>Rimac</option><option>SanBartolo</option><option>SanBorja</option><option>SanMiguel</option><option>SantaAnita</option><option>SantaRosa</option><option>SantiagodeSurco</option><option>Surquillo</option><option>VillaElSalvador</option>
 							  <option>Lima</option>
@@ -154,14 +154,14 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
 							</div>
-							<input type="text" name="direccion" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Direccion">
+							<input type="text" name="direccion" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Direccion" th:value="${tiendap.direccion}">
             </div>
             
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-phone"></i></span>
 							</div>
-							<input type="tel" name="telefono" class="form-control input_user"  pattern="[9]{1}[0-9]{8}" required placeholder="Ingrese su celular">
+							<input type="tel" name="telefono" class="form-control input_user"  pattern="[9]{1}[0-9]{8}" required placeholder="Ingrese su celular" th:value="${tiendap.telefono}">
             </div>
             
 

@@ -1,20 +1,18 @@
 package edu.ulima.prueba.ControllersGenerales;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
-
 @Controller
-@RequestMapping("/PaginaPrincipalComprador")
-public class PaginaPrincipalComprador {
+@RequestMapping("/logout")
+public class ControllerLogout {
+
     @GetMapping(value="/")
     public String Retornarpag(HttpServletRequest req){
-        
-
-        return "tienda-PaginaPrincipalComprador";
+        req.getSession().invalidate();
+        return "redirect:/";
     }
-    
 }

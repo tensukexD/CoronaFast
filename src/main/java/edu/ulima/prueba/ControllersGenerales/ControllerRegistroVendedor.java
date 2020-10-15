@@ -2,6 +2,8 @@ package edu.ulima.prueba.ControllersGenerales;
 
 import java.io.Console;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,20 @@ import edu.ulima.prueba.model.Vendedor;
 public class ControllerRegistroVendedor {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getIndex(){
+    public String getIndex(HttpServletRequest req){
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        String tipo = (String) req.getSession().getAttribute("tipo");
+
+        if(userid == null){
+            return "tienda-RegistroVendedor";
+        }else{
+            if(tipo == "comprador"){
+                return "redirect:/PaginaPrincipalComprador/";
+            }else{
+                return "redirect:/PaginaPrincipalVendedor/";
+            }
+        }
         
-        return "tienda-RegistroVendedor";
     }
     
     @PostMapping(value = "/crear")

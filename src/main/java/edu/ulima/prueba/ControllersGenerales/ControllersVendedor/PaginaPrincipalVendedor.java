@@ -15,7 +15,19 @@ public class PaginaPrincipalVendedor {
     @GetMapping(value="/")
     public String Retornarpag(HttpServletRequest req){
         
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        String tipo = (String) req.getSession().getAttribute("tipo");
 
-        return "ver-CarritoCompras";
+        if(userid == null){
+            return "redirect:/";
+        }
+        if(tipo.equals("comprador")){
+            return "redirect:/PaginaPrincipalComprador/";
+        }
+
+        return "tienda-PaginaPrincipalVendedor";
+        
+
+        
     }
 }

@@ -9,22 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.client.RestTemplate;
 
 import edu.ulima.prueba.model.Comprador;
-import edu.ulima.prueba.model.Vendedor;
 
-import org.springframework.http.ResponseEntity;
-import java.util.Arrays;
-import java.util.List;
+
 //estos vienen de login.java
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/registroComprador")
 public class ControllerRegistroComprador {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getIndex(){
+    public String getIndex(HttpServletRequest req){
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        String tipo = (String) req.getSession().getAttribute("tipo");
+
+        if(userid == null){
+            return "tienda-RegistroComprador";
+        }else{
+            if(tipo == "comprador"){
+                return "redirect:/PaginaPrincipalComprador/";
+            }else{
+                return "redirect:/PaginaPrincipalVendedor/";
+            }
+        }
         
-        return "tienda-RegistroComprador";
     }
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String crearComprador(String nombrecomp,String distrito, String direccion, String telefono,String correo, String contrasena){

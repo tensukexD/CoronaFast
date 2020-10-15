@@ -65,8 +65,8 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Vendedor newVendedor,
     System.out.println(id);
      if(l.isPresent()){
          current=l.get();
-         //current.setRol(vendedor.getRol());
-         //current.setEstado(vendedor.getEstado());
+         current.setNombre(vendedor.getNombre());
+         current.setTelefono(vendedor.getTelefono());
          lRepository.save(current);
          return new ResponseEntity<Vendedor>(current, HttpStatus.OK);
      }else{
