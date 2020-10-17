@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.ulima.prueba.model.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
-    Producto findByIdProducto(Long idProducto);
-    List<Producto> findAllByIdTienda(Long idTienda);
+    Producto findByIdProducto( long idProducto);
+    List<Producto> findBycategoria(String categoria);
+    List<Producto> findByIdUsuario( long idUsuario);
 }

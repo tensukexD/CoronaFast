@@ -13,38 +13,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import edu.ulima.prueba.model.Comprador;
 import edu.ulima.prueba.model.Producto;
 import edu.ulima.prueba.repository.ProductoRepository;
 
 
-
 @RestController
-@RequestMapping("/revisarProducto/{id}")
+//revisar todos los productos
+@RequestMapping("/revisarProductos")
 public class ControladorProducto {
     private ProductoRepository lRepository;
 
     @Autowired
     public ControladorProducto(ProductoRepository lrepository) {
         this.lRepository=lrepository;
-    }
-//TIPO Usuario
-@RequestMapping(value="/productos/mostrar",method=RequestMethod.GET)
-public ResponseEntity<List<Producto>> listarUsuarios( UriComponentsBuilder uri, @PathVariable("id") Long id){
-    List<Producto> listaProductos=lRepository.findAllByIdTienda(id);
+}
+
+@RequestMapping(value="productos/mostrar",method=RequestMethod.GET)
+public ResponseEntity<List<Producto>> listarUsuarios( UriComponentsBuilder uri){
+    List<Producto> listaproductos= lRepository.findAll();
 
     //HttpHeaders headers=new HttpHeaders();
     //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
         
-    return new ResponseEntity<List<Producto>>(listaProductos, HttpStatus.OK);
+    return new ResponseEntity<List<Producto>>(listaproductos, HttpStatus.OK);
     }
-    
 
 @RequestMapping(value="productos/agregar",method=RequestMethod.POST)
-public ResponseEntity<Void> agregarUsuario(@RequestBody Producto newProducto,
+public ResponseEntity<Void> agregarUsuarios(@RequestBody Producto newProducto,
                                             UriComponentsBuilder uri){
-
-
+    
+    
     Producto lg=lRepository.save(newProducto);
     lRepository.flush();
     Map<String,String> urlParams=new HashMap<>();
@@ -54,58 +52,58 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Producto newProducto,
     headers.setLocation(uri.path("/{tipo}/{id}").buildAndExpand(urlParams).toUri());   
     return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
- //se debe usar el id del usuario para actualizar
- 
+
+    @RequestMapping(value="productos/actualizar/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Producto> editarUsuarios(@PathVariable("id") Long id,
+                                                     @RequestBody Producto producto){
+        Producto current=null;
+        Optional<Producto> l=lRepository.findByIdUsuario(id);
+        
+   
+       System.out.println(id);
+        if(l.isPresent()){
+            current=l.get();
+            current.setnombreProducto(producto.getnombreProducto());
+            current.setcategoria(producto.getcategoria());
+            current.setprecio(producto.getprecio());
+            current.setcantStock(producto.cantStock());
+            current.setpuntuacion(producto.getpuntuacion());
+            lRepository.save(current);
+            return new ResponseEntity<Producto>(current, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }}
+
+    @RequestMapping(value="productos/eliminar/{id}", method=RequestMethod.DELETE)
+    public ResponseEntity<Void> eliminarUsuarios(@PathVariable("id") Long id){
+        lRepository.deleteById(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 
 
- @RequestMapping(value="compradores/actualizar/{id}", method=RequestMethod.PUT)
- public ResponseEntity<Comprador> editarUsuarios(@PathVariable("id") Long id,
-                                                  @RequestBody Comprador vendedor){
-     Comprador current=null;
-     Optional<Comprador> l=lRepository.findById(id);
-     
-
-    System.out.println(id);
-     if(l.isPresent()){
-         current=l.get();
-         //current.setRol(vendedor.getRol());
-         //current.setEstado(vendedor.getEstado());
-         lRepository.save(current);
-         return new ResponseEntity<Comprador>(current, HttpStatus.OK);
-     }else{
-         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-     }}
- 
-             
-@RequestMapping(value="compradores/eliminar/{id}", method=RequestMethod.DELETE)
-public ResponseEntity<Void> eliminarUsuarios(@PathVariable("id") Long id){
-    lRepository.deleteById(id);
-    return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-}
+@RequestMapping(value="producto/seleccionar/{categorias}",method=RequestMethod.GET)
+public ResponseEntity<List<Producto>> listarcategoria(@PathVariable("categorias") String categoria){
     
-@RequestMapping(value="compradores/seleccionar/{id}",method=RequestMethod.GET)
-public ResponseEntity<Comprador> listarusuarioporid(@PathVariable("id") Long id){
-    Comprador current=null;
-    Optional<Comprador> l =lRepository.findById(id);
-    current=l.get();
-
+    List<Producto>  l =lRepository.findBycategoria(categoria);
+    
     //HttpHeaders headers=new HttpHeaders();
     //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
-        
-    return new ResponseEntity<Comprador>(current, HttpStatus.OK);
+            
+    return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
+    }
+
+@RequestMapping(value="producto/seleccionar/{usuarios}",method=RequestMethod.GET)
+public ResponseEntity<List<Producto>> listarUsuario(@PathVariable("usuarios") String idUsuario){
+    
+    List<Producto>  l =lRepository.findByidUsuario(idUsuario);
+    
+    //HttpHeaders headers=new HttpHeaders();
+    //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
+            
+    return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
     }
 }
 
-/*@RequestMapping(value="usuarios/mostrar/{estado}",method=RequestMethod.GET)
-public ResponseEntity<List<Vendedor>> ListarUsuariosporEstado(@PathVariable("estado") String estado){
-    //List<Vendedor> listaUsuarios=lRepository.findByestado(estado);
-
-    //HttpHeaders headers=new HttpHeaders();
-    //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
-        
-    return new ResponseEntity<List<Vendedor>>(listaUsuarios, HttpStatus.OK);
-    }    
 
 
-
-}*/   
