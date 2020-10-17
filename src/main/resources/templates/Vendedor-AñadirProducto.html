@@ -71,7 +71,7 @@
             <i class="fas fa-shopping-bag"></i> Mi tienda
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-boxes"></i> Mis productos</a>
+            <a class="dropdown-item" href="/PaginaPrincipalVendedor/"><i class="fas fa-boxes"></i> Mis productos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-dolly" ></i> Agregar producto</a>
             <div class="dropdown-divider"></div>
@@ -88,9 +88,9 @@
             <i class="fas fa-user"></i> Mi cuenta
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"><i class="far fa-user"></i>  Mi perfil</a>              
+            <a class="dropdown-item" href="/DatosVendedor/"><i class="far fa-user"></i>  Mi perfil</a>              
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            <a class="dropdown-item" href="/logout/"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
           </div>
         </li>
         
@@ -111,37 +111,39 @@
 
         <!--Body-->
         <div class="form-group">
-          <div class="input-group mb-2">
-            <input type="text" class="form-control"   placeholder="Nombre del producto " required>
-          </div>
-          
-          <div class="input-group mb-2">
-          <select class='form-control' aria-placeholder="Filtrar por categoria">
-            <option value="" disabled selected>Categoría</option>
-            <option>Comida</option>
-            <option>Electrónicos</option>
-            <option>Accesorios </option>
-            <option>Ropa </option>
-            <option>Medicina </option>
-            <option>Juguetes </option>
-            <option>Limpieza </option>
-            <option>Útiles de oficina </option>
-            </select>
-          </div>
-
+          <form method="POST" action="/AgregarProducto/crear">
             <div class="input-group mb-2">
-              <input type="text" class="form-control"  placeholder="Imagen (URL)" required>
+              <input type="text" name="nombreProducto" class="form-control"   placeholder="Nombre del producto " required>
+            </div>
+            
+            <div class="input-group mb-2">
+            <select name="categoria" class='form-control' aria-placeholder="Filtrar por categoria">
+              <option value="" disabled selected>Categoría</option>
+              <option>Comida</option>
+              <option>Electrónicos</option>
+              <option>Accesorios </option>
+              <option>Ropa </option>
+              <option>Medicina </option>
+              <option>Juguetes </option>
+              <option>Limpieza </option>
+              <option>Útiles de oficina </option>
+              </select>
             </div>
 
             <div class="input-group mb-2">
-              <input type="text" class="form-control"   placeholder="Precio (En soles)" required>
+              <input type="text" name="url" class="form-control"  placeholder="Imagen (URL)" required>
             </div>
 
             <div class="input-group mb-2">
-              <input type="text" class="form-control"   placeholder="Cantidad en stock" required>
+              <input type="text" name="precio" class="form-control"   placeholder="Precio (En soles)" required>
             </div>
 
+            <div class="input-group mb-2">
+              <input type="text" name="stock" class="form-control"   placeholder="Cantidad en stock" required>
+            </div>
 
+            <button type="submit" name="button" id="botonVendedor" class="btn btn-success" style="margin-bottom: 20px;">Agregar Producto</button>
+          </form>
         </div>
       </div>
 

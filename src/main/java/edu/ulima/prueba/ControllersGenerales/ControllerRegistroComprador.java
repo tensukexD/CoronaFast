@@ -31,7 +31,7 @@ public class ControllerRegistroComprador {
         }
         
     }
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/crear", method = RequestMethod.POST)
     public String crearComprador(String nombrecomp,String distrito, String direccion, String telefono,String correo, String contrasena){
         
         RestTemplate rest = new RestTemplate();

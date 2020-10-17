@@ -71,9 +71,9 @@
             <i class="fas fa-shopping-bag"></i> Mi tienda
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-boxes"></i> Mis productos</a>
+            <a class="dropdown-item" href="/PaginaPrincipalVendedor/"><i class="fas fa-boxes"></i> Mis productos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-dolly" ></i> Agregar producto</a>
+            <a class="dropdown-item" href="/AgregarProducto/"><i class="fas fa-dolly" ></i> Agregar producto</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" ><i class="fas fa-clipboard-list" ></i> Agregar categoría</a>
             <div class="dropdown-divider" ></div>
@@ -142,10 +142,10 @@
 
       <!--Cuerpo-->
 
-            <tr th:each="l : ${liston}" >
+            <tr th:each="l : ${productosLista}" >
                 <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
-                <td th:text="${l.nombreProducto}">???</td>
-                <td th:text="${l.categoria}">Comida</td>
+                <td th:text="${l.nombreProducto}"></td>
+                <td th:text="${l.categoria}"></td>
                 <td> <button type="button" class="btn btn-info">Editar</button> </td>
             </tr>
             

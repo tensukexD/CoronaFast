@@ -18,7 +18,7 @@ public class Producto {
     private Long idProducto;
 
     private Long idUsuario;
-    private File imagen;//falta ver
+    private String imagen;//falta ver
     private String nombreProducto;
     private String categoria;
     private float precio;

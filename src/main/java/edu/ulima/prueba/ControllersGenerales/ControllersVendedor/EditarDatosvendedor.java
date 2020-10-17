@@ -49,8 +49,8 @@ public class EditarDatosvendedor {
         vendedoreditado.setTelefono(telefono);
         RestTemplate rest = new RestTemplate();
         RestTemplate rest2 = new RestTemplate();
-        String link = "https://localhost:8080/revisarTienda/tienda/actualizar/"+userid;
-        String link2 = "https://localhost:8080/revisarVendedores/vendedores/actualizar/"+userid;
+        String link = "http://localhost:8080/revisarTienda/tienda/actualizar/"+userid;
+        String link2 = "http://localhost:8080/revisarVendedores/vendedores/actualizar/"+userid;
         rest.put(link2, vendedoreditado, Vendedor.class);
         rest2.put(link, tiendaeditada, Tienda.class);
         return "redirect:/PaginaPrincipalVendedor/";

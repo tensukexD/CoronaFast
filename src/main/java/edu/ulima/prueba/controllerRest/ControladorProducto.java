@@ -38,6 +38,14 @@ public ResponseEntity<List<Producto>> listarProductos( UriComponentsBuilder uri)
     return new ResponseEntity<List<Producto>>(listaproductos, HttpStatus.OK);
     }
 
+@RequestMapping(value="productosTienda/{id}/mostrar",method=RequestMethod.GET)
+public ResponseEntity<List<Producto>> productosPorTienda(@PathVariable("id") Long id){
+
+    List<Producto> listaProductos = lRepository.findByIdUsuario(id);
+
+    return new ResponseEntity<List<Producto>>(listaProductos, HttpStatus.OK);
+}
+
 @RequestMapping(value="productos/agregar",method=RequestMethod.POST)
 public ResponseEntity<Void> agregarProducto(@RequestBody Producto newProducto,
                                             UriComponentsBuilder uri){

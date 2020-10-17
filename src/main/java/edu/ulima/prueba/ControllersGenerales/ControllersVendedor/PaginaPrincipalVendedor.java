@@ -23,6 +23,8 @@ public class PaginaPrincipalVendedor {
     @GetMapping(value="/")
     public String Retornarpag(Model model,HttpServletRequest req){
         
+        RestTemplate rest = new RestTemplate();
+
         String userid = (String) req.getSession().getAttribute("idingresado");
         String tipo = (String) req.getSession().getAttribute("tipo");
 
@@ -32,31 +34,14 @@ public class PaginaPrincipalVendedor {
         if(tipo.equals("comprador")){
             return "redirect:/PaginaPrincipalComprador/";
         }
-        RestTemplate rest=new RestTemplate();
-        ResponseEntity<Producto[]>listadeusuarios=rest.getForEntity("https://proyectowebfinal1.herokuapp.com/revisarUsuarios/usuarios/mostrar/Inactivo",Producto[].class);  
-            Producto[] lus1=listadeusuarios.getBody();
-            List<Producto> lus2=Arrays.asList(lus1);
-            
-            if (lus2 != null) {
-                model.addAttribute("liston", lus2);
-                model.addAttribute("cantidad", lus2.size());
-    
-                
-            }
+        
+        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://localhost:8080/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
+        Producto[] arrPro = listaProductos.getBody();
+        List<Producto> listPro = Arrays.asList(arrPro);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if(listPro!=null){
+            model.addAttribute("productosLista", listPro);
+        }
 
         return "tienda-PaginaPrincipalVendedor";
         
