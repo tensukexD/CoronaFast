@@ -29,7 +29,7 @@ public class ControladorTienda {
     }
 //TIPO Usuario
 @RequestMapping(value="tiendas/mostrar",method=RequestMethod.GET)
-public ResponseEntity<List<Tienda>> listarUsuarios( UriComponentsBuilder uri){
+public ResponseEntity<List<Tienda>> listarTiendas( UriComponentsBuilder uri){
     List<Tienda> listatiendas=lRepository.findAll();
 
     //HttpHeaders headers=new HttpHeaders();
@@ -40,7 +40,7 @@ public ResponseEntity<List<Tienda>> listarUsuarios( UriComponentsBuilder uri){
     
 
 @RequestMapping(value="tiendas/agregar",method=RequestMethod.POST)
-public ResponseEntity<Void> agregarUsuario(@RequestBody Tienda newTienda,
+public ResponseEntity<Void> agregarTienda(@RequestBody Tienda newTienda,
                                             UriComponentsBuilder uri){
 
 
@@ -58,7 +58,7 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Tienda newTienda,
 
 
  @RequestMapping(value="tienda/actualizar/{id}", method=RequestMethod.PUT)
- public ResponseEntity<Tienda> editarUsuarios(@PathVariable("id") Long id,
+ public ResponseEntity<Tienda> editarTienda(@PathVariable("id") Long id,
                                                   @RequestBody Tienda tienda){
      Tienda current=null;
      Optional<Tienda> l=lRepository.findByIdUsuario(id);
@@ -80,7 +80,7 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Tienda newTienda,
  
              
 @RequestMapping(value="tienda/eliminar/{id}", method=RequestMethod.DELETE)
-public ResponseEntity<Void> eliminarUsuarios(@PathVariable("id") Long id){
+public ResponseEntity<Void> eliminarTienda(@PathVariable("id") Long id){
     lRepository.deleteById(id);
     return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 }

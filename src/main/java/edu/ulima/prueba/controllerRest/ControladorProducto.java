@@ -29,7 +29,7 @@ public class ControladorProducto {
 }
 
 @RequestMapping(value="productos/mostrar",method=RequestMethod.GET)
-public ResponseEntity<List<Producto>> listarUsuarios( UriComponentsBuilder uri){
+public ResponseEntity<List<Producto>> listarProductos( UriComponentsBuilder uri){
     List<Producto> listaproductos= lRepository.findAll();
 
     //HttpHeaders headers=new HttpHeaders();
@@ -39,7 +39,7 @@ public ResponseEntity<List<Producto>> listarUsuarios( UriComponentsBuilder uri){
     }
 
 @RequestMapping(value="productos/agregar",method=RequestMethod.POST)
-public ResponseEntity<Void> agregarUsuarios(@RequestBody Producto newProducto,
+public ResponseEntity<Void> agregarProducto(@RequestBody Producto newProducto,
                                             UriComponentsBuilder uri){
     
     
@@ -54,20 +54,20 @@ public ResponseEntity<Void> agregarUsuarios(@RequestBody Producto newProducto,
     }
 
     @RequestMapping(value="productos/actualizar/{id}", method=RequestMethod.PUT)
-    public ResponseEntity<Producto> editarUsuarios(@PathVariable("id") Long id,
+    public ResponseEntity<Producto> editarProducto(@PathVariable("id") Long id,
                                                      @RequestBody Producto producto){
         Producto current=null;
-        Optional<Producto> l=lRepository.findByIdUsuario(id);
+        Optional<Producto> l = lRepository.findByIdProducto(id);
         
    
        System.out.println(id);
-        if(l.isPresent()){
+        if(l.isPresent()) {
             current=l.get();
-            current.setnombreProducto(producto.getnombreProducto());
-            current.setcategoria(producto.getcategoria());
-            current.setprecio(producto.getprecio());
-            current.setcantStock(producto.cantStock());
-            current.setpuntuacion(producto.getpuntuacion());
+            current.setNombreProducto(producto.getNombreProducto());
+            current.setCategoria(producto.getCategoria());
+            current.setPrecio(producto.getPrecio());
+            current.setCantStock(producto.getCantStock());
+            current.setPuntuacion(producto.getPuntuacion());
             lRepository.save(current);
             return new ResponseEntity<Producto>(current, HttpStatus.OK);
         }else{
@@ -83,7 +83,7 @@ public ResponseEntity<Void> agregarUsuarios(@RequestBody Producto newProducto,
 
 
 @RequestMapping(value="producto/seleccionar/{categorias}",method=RequestMethod.GET)
-public ResponseEntity<List<Producto>> listarcategoria(@PathVariable("categorias") String categoria){
+public ResponseEntity<List<Producto>> listarCategoria(@PathVariable("categorias") String categoria){
     
     List<Producto>  l =lRepository.findBycategoria(categoria);
     
@@ -93,16 +93,16 @@ public ResponseEntity<List<Producto>> listarcategoria(@PathVariable("categorias"
     return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
     }
 
-@RequestMapping(value="producto/seleccionar/{usuarios}",method=RequestMethod.GET)
-public ResponseEntity<List<Producto>> listarUsuario(@PathVariable("usuarios") String idUsuario){
+/*@RequestMapping(value="producto/seleccionar/{usuarios}",method=RequestMethod.GET)
+public ResponseEntity<List<Producto>> listarUsuario(@PathVariable("usuarios") Long idUsuario){
     
-    List<Producto>  l =lRepository.findByidUsuario(idUsuario);
+    List<Producto>  l =lRepository.findByIdUsuario(idUsuario);
     
     //HttpHeaders headers=new HttpHeaders();
     //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
             
     return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
-    }
+    }*/
 }
 
 
