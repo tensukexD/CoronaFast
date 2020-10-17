@@ -1,4 +1,4 @@
-package edu.ulima.prueba.ControllersGenerales.ControllersVendedor;
+package edu.ulima.prueba.ControllersGenerales;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

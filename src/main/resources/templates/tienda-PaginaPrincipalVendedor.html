@@ -130,10 +130,10 @@
 
 </div>
   
-    <table class="table table-bordered track_tbl " id="tablaProductos">
+    <table class="table table-bordered track_tbl " id="tablaProductos" >
 
       <!--Cabecera-->
-            <tr class="header">
+            <tr class="header" >
                 <th style="width: 10%;">Producto</th>
                 <th style="width: 50%;">Nombre</th>
                 <th style="width: 20%;">Categoría</th>
@@ -142,10 +142,10 @@
 
       <!--Cuerpo-->
 
-            <tr >
-                <td scope="row" style="padding-right: 0px"> <img src="https://mercafree.com/wp-content/uploads/2020/04/gaseosa_coca_cola_original-46082.png" style="max-width: 100px;"> </td>
-                <td>Coca Cola de 500ml</td>
-                <td>Comida</td>
+            <tr th:each="l : ${liston}" >
+                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
+                <td th:text="${l.nombreProducto}">???</td>
+                <td th:text="${l.categoria}">Comida</td>
                 <td> <button type="button" class="btn btn-info">Editar</button> </td>
             </tr>
             
@@ -162,6 +162,13 @@
             <td>Electrónicos</td>
             <td> <button type="button" class="btn btn-info">Editar</button> </td>
         </tr>
+        <tr >
+          <td scope="row" style="padding-right: 0px"> <img src="https://i.linio.com/p/640ed3b77502de4ed0db77398d829841-zoom.jpg" style="max-width: 100px;"> </td>
+          <td>Cargador USB magnético</td>
+          <td>Electrónicos</td>
+          <td> <button type="button" class="btn btn-info">Editar</button> </td>
+      </tr>
+      
            
 
     </table>
