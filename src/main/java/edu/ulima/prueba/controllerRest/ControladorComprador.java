@@ -59,21 +59,24 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Comprador newComprador,
 
  @RequestMapping(value="compradores/actualizar/{id}", method=RequestMethod.PUT)
  public ResponseEntity<Comprador> editarUsuarios(@PathVariable("id") Long id,
-                                                  @RequestBody Comprador vendedor){
+                                                  @RequestBody Comprador comprador){
      Comprador current=null;
      Optional<Comprador> l=lRepository.findById(id);
      
 
     System.out.println(id);
-     if(l.isPresent()){
-         current=l.get();
-         //current.setRol(vendedor.getRol());
-         //current.setEstado(vendedor.getEstado());
-         lRepository.save(current);
-         return new ResponseEntity<Comprador>(current, HttpStatus.OK);
-     }else{
-         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-     }}
+    if(l.isPresent()){
+        current=l.get();
+        current.setDistrito(comprador.getDistrito());
+        //current.setTiendasFavoritas(tienda.getTiendasFavoritas()); ARREGLO
+        //current.setCarritoCompras(tienda.getCarritoCompras()); ARREGLO
+        current.setDireccion(comprador.getDireccion());
+        current.setCategoriaPreferida(comprador.getCategoriaPreferida());
+        lRepository.save(current);
+        return new ResponseEntity<Comprador>(current, HttpStatus.OK);
+    }else{
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }}
  
              
 @RequestMapping(value="compradores/eliminar/{id}", method=RequestMethod.DELETE)
