@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>CoronaFast - Página Principal del Vendedor </title>
+  <title>CoronaFast - Añadir Productos </title>
   <link rel="shortcut icon" type="image/x-icon" href="../imagenes/coronavirus.png" />
 
 
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <!-- Estilos propios -->
-  <link href="../css/tienda-PaginaPrincipalVendedor.css" rel="stylesheet">
+  <link href="../css/Vendedor-AñadirProducto.css" rel="stylesheet">
 
 
 </head>
@@ -73,7 +73,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/PaginaPrincipalVendedor/"><i class="fas fa-boxes"></i> Mis productos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/AgregarProducto/"><i class="fas fa-dolly" ></i> Agregar producto</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-dolly" ></i> Agregar producto</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" ><i class="fas fa-clipboard-list" ></i> Agregar categoría</a>
             <div class="dropdown-divider" ></div>
@@ -103,101 +103,53 @@
 
   <!-- Contenido de página -->
 
-  <div class="p-4 container">
-    <h3 style="padding:10px;">Mis Productos</h3>
+  <div class="container" style="padding-top: 50px;">
+    <h2 class="text-center">Editar Producto </h2>
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-8 col-lg-6 pb-5">
+      <div class="card-body p-3">
 
-<div class="form-group row">
-  <div class="col-md-3">
-    <!--Buscar por nombre-->
-    <input type="text" class="form-control" aria-label="Search" id="myInput" onkeyup="filtrarNombre()" placeholder="Buscar por nombre..." title="Busca por nombre" style="margin-bottom: 20px;">
-  </div>
+        <!--Body-->
+        <div class="form-group">
+          <form method="POST" th:action="@{/EditarProducto/{y}/editar (y = ${producto.idProducto})}">
+            <div class="input-group mb-2">
+              <input type="text" name="nombreProducto" class="form-control" th:field="${producto.nombreProducto}" placeholder="Nombre del producto " required>
+            </div>
+            
+            <div class="input-group mb-2">
+            <select name="categoria" class='form-control' th:value="${producto.categoria}" aria-placeholder="Filtrar por categoria">
+              <option value="" disabled selected>Categoría</option>
+              <option>Comida</option>
+              <option>Electrónicos</option>
+              <option>Accesorios </option>
+              <option>Ropa </option>
+              <option>Medicina </option>
+              <option>Juguetes </option>
+              <option>Limpieza </option>
+              <option>Útiles de oficina </option>
+              </select>
+            </div>
 
-  <div class="col-xs-4">
-    <!--Buscar por categoria-->
-    <select id="mylist" onchange="filtrarCategoria()" class='form-control' aria-placeholder="Filtrar por categoria">
-      <option value="">Ver todas las categorías</option>
-      <option>Comida</option>
-      <option>Electrónicos</option>
-      <option>Accesorios </option>
-      <option>Ropa </option>
-      <option>Medicina </option>
-      <option>Juguetes </option>
-      <option>Limpieza </option>
-      <option>Útiles de oficina </option>
-      </select>
+            <div class="input-group mb-2">
+              <input type="text" name="imagen" class="form-control" th:field="${producto.imagen}" placeholder="Imagen (URL)" required>
+            </div>
 
-  </div>
+            <div class="input-group mb-2">
+              <input type="text" name="precio" class="form-control" th:field="${producto.precio}"  placeholder="Precio (En soles)" required>
+            </div>
 
-</div>
-  
-    <table class="table table-bordered track_tbl " id="tablaProductos" >
+            <div class="input-group mb-2">
+              <input type="text"  name="cantStock" class="form-control" th:field="${producto.cantStock}"  placeholder="Cantidad en stock" required>
+            </div>
 
-      <!--Cabecera-->
-            <tr class="header" >
-                <th style="width: 10%;">Producto</th>
-                <th style="width: 50%;">Nombre</th>
-                <th style="width: 20%;">Categoría</th>
-                <th style="width: 10%;">Editar</th>
-            </tr>
+            <button type="submit" name="button" id="botonVendedor" class="btn btn-success"  style="margin-bottom: 20px;">Editar Producto</button>
+          </form>
+        </div>
+      </div>
 
-      <!--Cuerpo-->
-
-            <tr th:each="l : ${productosLista}" >
-                <form method="GET" th:action="@{/EditarProducto/{y}/ (y = ${l.idProducto})}" >
-                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
-                <td th:text="${l.nombreProducto}"></td>
-                <td th:text="${l.categoria}"></td>
-                <td> <button type="submit" class="btn btn-info">Editar</button> </td>
-                </form>
-            </tr>
-    </table>
     </div>
-
-    <!--Script de busqueda por nombre-->
-    <script>
-      function filtrarNombre() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tablaProductos");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[1];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }       
-        }
-      }
-      </script>
-
-    <!--Script de busqueda por categoria-->
-    <script>
-      function filtrarCategoria() {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("mylist");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("tablaProductos");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[2];
-          if (td) {
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }       
-        }
-      }
-      </script>
-
-
-
+	</div>
+</div>
   <!-- /.container -->
 
   <!-- Footer -->

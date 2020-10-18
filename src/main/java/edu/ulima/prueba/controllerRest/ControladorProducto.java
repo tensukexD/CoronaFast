@@ -46,6 +46,16 @@ public ResponseEntity<List<Producto>> productosPorTienda(@PathVariable("id") Lon
     return new ResponseEntity<List<Producto>>(listaProductos, HttpStatus.OK);
 }
 
+@RequestMapping(value="productoMostrar/{id}", method = RequestMethod.GET)
+public ResponseEntity<Producto> productoPorId(@PathVariable("id") Long id){
+
+    Producto producto = null;
+    Optional<Producto> l = lRepository.findByIdProducto(id);
+    producto=l.get();
+
+    return new ResponseEntity<>(producto, HttpStatus.OK);
+}
+
 @RequestMapping(value="productos/agregar",method=RequestMethod.POST)
 public ResponseEntity<Void> agregarProducto(@RequestBody Producto newProducto,
                                             UriComponentsBuilder uri){
@@ -73,6 +83,7 @@ public ResponseEntity<Void> agregarProducto(@RequestBody Producto newProducto,
             current=l.get();
             current.setNombreProducto(producto.getNombreProducto());
             current.setCategoria(producto.getCategoria());
+            current.setImagen(producto.getImagen());
             current.setPrecio(producto.getPrecio());
             current.setCantStock(producto.getCantStock());
             current.setPuntuacion(producto.getPuntuacion());
