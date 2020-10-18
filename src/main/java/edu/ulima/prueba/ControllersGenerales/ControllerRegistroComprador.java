@@ -32,7 +32,7 @@ public class ControllerRegistroComprador {
         
     }
     @RequestMapping(value = "/crear", method = RequestMethod.POST)
-    public String crearComprador(String nombrecomp,String distrito, String direccion, String telefono,String correo, String contrasena){
+    public String crearComprador(String nombrecomp,String distrito, String direccion, String telefono,String correo, String contrasena, String categoriaPreferida){
         
         RestTemplate rest = new RestTemplate();
       
@@ -44,6 +44,7 @@ public class ControllerRegistroComprador {
         comprador.setDireccion(direccion);
         comprador.setNombre(nombrecomp);
         comprador.setDistrito(distrito);
+        comprador.setCategoriaPreferida(categoriaPreferida);
    
 
 

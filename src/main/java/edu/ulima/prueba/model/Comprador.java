@@ -14,5 +14,5 @@ public class Comprador extends Usuario {
     private OrdenCompra[] historialPedidos;
     private Producto[] carritoCompras;
     private Producto[] listaDeseados;
-    private String CategoriaPreferida;
+    private String categoriaPreferida;
 }
