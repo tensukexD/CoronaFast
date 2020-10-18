@@ -56,39 +56,33 @@
         -->
 
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell"></i> Notificaciones
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" ><i class="fas fa-clipboard-list"></i> Lista notificaciones</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" ><i class="fas fa-bell"></i> Agregar notificación</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-bell"></i> </a>
         </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-shopping-bag"></i> Mi tienda
+            <i class="fas fa-shopping-bag"></i> Mis compras
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-boxes"></i> Mis productos</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-dolly" ></i> Agregar producto</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" ><i class="fas fa-clipboard-list" ></i> Agregar categoría</a>
-            <div class="dropdown-divider" ></div>
-            <a class="dropdown-item" href="#" ><i class="fas fa-memory"></i> Historial de ventas</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" ><i class="fas fa-cog"></i> Configuraciones</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+            
 
           </div>
+
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user"></i> Mi cuenta
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/DatosVendedeor/"><i class="far fa-user"></i>  Mi perfil</a>              
+            <a class="dropdown-item" href="/DatosComprador/"><i class="far fa-user"></i>  Mi perfil</a>              
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/logout/"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
           </div>
@@ -107,69 +101,56 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">				 
 				<div class="d-flex justify-content-center form_container" >
-					<form method="POST" action="/EditarDatosVendedor/editar">
-						<p><h3>EDITAR DATOS DE VENDEDOR</h3></p>	
-
-            <hr>
-            <div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-							</div>
-							<input type="text" name="razonSocial" class="form-control input_user" required maxlength="32" placeholder="Ingrese su Razon Social" th:value="${tiendap.nombreTienda}">
-            </div>
-            
+					<form method="POST" action="/EditarDatosComprador/editar">
+						<p><b>EDITAR DATOS COMPRADOR</b></p>	
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" id="ruc" name="ruc" class="form-control input_user"  required pattern="[2]{1}[0]{1}[0-9]{11}" placeholder="Ingrese su RUC (Ej. 20XXXXXXXXXXX)" th:value="${tiendap.RUC}">
+							<input type="text" name="nombre" class="form-control input_user" th:value="${comprador.nombre}" required maxlength="32" placeholder="Ingrese su nombre Completo">
 						</div>
-						<div class="alert alert-danger alert-dismissible" style="display: none;" id="alertaRUC">
-							<strong>RUC ya registrado</strong> 
-            </div>
-
-              
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-angle-right"></i></span>
-							</div>
-							<input type="text" name="nombre" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Nombre Completo" th:value="${vendedorp.nombre}">
-            </div>
-                        
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 							<label for="exampleFormControlSelect1"></label>
-							<select name="distrito" class="form-control" required id="eligedistrito" th:value="${tiendap.distrito}">
+							<select name="distrito" class="form-control" required id="eligedistrito">
+                <option th:value="${comprador.distrito}">Distritos</option>
 							  <option>LaMolina</option><option>LaVictoria</option>
 							  <option>Lurigancho</option><option>Lurín</option><option>MagdalenadelMar</option><option>Miraflores</option><option>Pachacamac</option><option>Pucusana</option><option>PuebloLibre</option><option>PuentePiedra</option><option>PuntaHermosa</option><option>PuntaNegra</option><option>Rimac</option><option>SanBartolo</option><option>SanBorja</option><option>SanMiguel</option><option>SantaAnita</option><option>SantaRosa</option><option>SantiagodeSurco</option><option>Surquillo</option><option>VillaElSalvador</option>
 							  <option>Lima</option>
 							  <option>Lince</option>
 							  <option>Los Olivos</option>
 							</select>
-              </div>
-
+						  </div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="direccion" class="form-control input_user"  required maxlength="32" placeholder="Ingrese su Direccion" th:value="${tiendap.direccion}">
-            </div>
-            
+							<input type="text" th:value="${comprador.direccion}" name="direccion" class="form-control input_user" value="" required maxlength="32" placeholder="Ingrese Direccion">
+						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-phone"></i></span>
 							</div>
-							<input type="tel" name="telefono" class="form-control input_user"  pattern="[9]{1}[0-9]{8}" required placeholder="Ingrese su celular" th:value="${tiendap.telefono}">
-            </div>
-            
-
-						
+							<input type="tel" th:value="${comprador.telefono}" name="telefono" class="form-control input_user"  pattern="[9]{1}[0-9]{8}" required placeholder="Ingrese su celular">
 						</div>
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 	  <button type="submit" name="button" id="botonVendedor" class="btn btn-success" style="margin-bottom: 20px;">Completar registro</button>
-				   </div>
+						<div class="input-group mb-2">
+							<select name="categoriaPreferida" class='form-control' aria-placeholder="Filtrar por categoria">
+							  <option value="" disabled selected>¡Ingrese su categoría de productos favorita para ver más ofertas!</option>
+							  <option>Comida</option>
+							  <option>Electrónicos</option>
+							  <option>Accesorios </option>
+							  <option>Ropa </option>
+							  <option>Medicina </option>
+							  <option>Juguetes </option>
+							  <option>Limpieza </option>
+							  <option>Útiles de oficina </option>
+							  </select>
+						</div>
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" name="button" id="botonVendedor" class="btn btn-success" style="margin-bottom: 20px;">Completar registro</button>
+          </div>
 					</form>
 				</div>
 			</div>
