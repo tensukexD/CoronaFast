@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CoronaFast - Resultado de Busqueda </title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/coronavirus.png" />
+
+
+  <!-- Bootstrap Jquery Popper BootstrapJS-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  <!--Iconos-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <!-- Estilos propios -->
+  <link href="../css/tienda-PaginaPrincipalVendedor.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+ <!-- Barra superior -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"  >
+  <div class="container">
+    <a class="navbar-brand" href="#">CoronaFast</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <!-- Barra de busqueda-->
+    <div class="d-flex justify-content-center h-100" style="padding-left: 50px;">
+      <div class="searchbar">
+        <input class="search_input" type="text" name="" placeholder="Busca otro artículo">
+        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+
+        <!--Este por si deseamos activar el boton
+        <li class="nav-item active">
+        </li>
+        -->
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-bell"></i> </a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-shopping-bag"></i> Mis compras
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+            
+
+          </div>
+
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i> Mi cuenta
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#"><i class="far fa-user"></i>  Mi perfil</a>              
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout/"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+  <!-- Contenido de página -->
+
+  <div class="p-4 container">
+    <h3 style="padding:10px;">Mis Productos</h3>
+
+<div class="form-group row">
+  <div class="col-md-3">
+    <!--Buscar por nombre-->
+    <input type="text" class="form-control" aria-label="Search" id="myInput" onkeyup="filtrarNombre()" placeholder="Buscar por nombre..." title="Busca por nombre" style="margin-bottom: 20px;">
+  </div>
+
+  <div class="col-xs-4">
+    <!--Buscar por categoria-->
+    <select id="mylist" onchange="filtrarCategoria()" class='form-control' aria-placeholder="Filtrar por categoria">
+      <option value="">Ver todas las categorías</option>
+      <option>Comida</option>
+      <option>Electrónicos</option>
+      <option>Accesorios </option>
+      <option>Ropa </option>
+      <option>Medicina </option>
+      <option>Juguetes </option>
+      <option>Limpieza </option>
+      <option>Útiles de oficina </option>
+      </select>
+
+  </div>
+
+</div>
+  
+    <table class="table table-bordered track_tbl " id="tablaProductos" >
+
+      <!--Cabecera-->
+            <tr class="header" >
+                <th style="width: 10%;">Producto</th>
+                <th style="width: 30%;">Nombre</th>
+                <th style="width: 15%;">Categoría</th>
+                <th style="width: 15%;">Tienda</th>
+                <th style="width: 15%;">Agregar Producto Favorito</th>
+                <th style="width: 15%;">Carrito de compras</th>
+            </tr>
+
+      <!--Cuerpo-->
+
+            <tr th:each="l : ${productosLista}" >
+                <form method="GET" th:action="@{/EditarProducto/{y}/ (y = ${l.idProducto})}" >
+                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
+                <td th:text="${l.nombreProducto}"></td>
+                <td th:text="${l.categoria}"></td>
+                <td> <button type="submit" class="btn btn-info">Enlace Tienda</button>
+                  <button type="submit" class="btn btn-info">Agregar Tienda a Favoritas</button></td>
+                
+                <td> <button type="submit" class="btn btn-info">Agregar Producto a Favoritos</button> </td>
+                <td> <button type="submit" class="btn btn-info">Añadir al Carrito de compras</button> </td>
+                </form>
+            </tr>
+    </table>
+    </div>
+
+    <!--Script de busqueda por nombre-->
+    <script>
+      function filtrarNombre() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tablaProductos");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
+
+    <!--Script de busqueda por categoria-->
+    <script>
+      function filtrarCategoria() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("mylist");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tablaProductos");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[2];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
+
+
+
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Coronamigos SAC 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
