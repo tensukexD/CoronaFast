@@ -33,7 +33,7 @@
  <!-- Barra superior -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"  >
   <div class="container">
-    <a class="navbar-brand" href="#">CoronaFast</a>
+    <a class="navbar-brand" href="/PaginaPrincipalComprador/">CoronaFast</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,10 +41,12 @@
     
     <!-- Barra de busqueda-->
     <div class="d-flex justify-content-center h-100" style="padding-left: 50px;">
-      <div class="searchbar">
-        <input class="search_input" type="text" name="" placeholder="Busca otro artículo">
-        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-      </div>
+      <form action="/ResultadosBusqueda/" method="POST">
+        <div class="searchbar">
+            <input class="search_input" type="text" name="strBusqueda" placeholder="Busca otro artículo">
+            <button type="submit" class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+    </form>
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
@@ -98,7 +100,7 @@
   <!-- Contenido de página -->
 
   <div class="p-4 container">
-    <h3 style="padding:10px;">Mis Productos</h3>
+    <h3 style="padding:10px;">Productos</h3>
 
 <div class="form-group row">
   <div class="col-md-3">
@@ -143,8 +145,9 @@
                 <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
                 <td th:text="${l.nombreProducto}"></td>
                 <td th:text="${l.categoria}"></td>
-                <td> <button type="submit" class="btn btn-info">Enlace Tienda</button>
-                  <button type="submit" class="btn btn-info">Agregar Tienda a Favoritas</button></td>
+                <td>
+                  <a href="">Enlace Tienda</a> 
+                  <button type="submit" class="btn btn-info">Favorita</button></td>
                 
                 <td> <button type="submit" class="btn btn-info">Agregar Producto a Favoritos</button> </td>
                 <td> <button type="submit" class="btn btn-info">Añadir al Carrito de compras</button> </td>
