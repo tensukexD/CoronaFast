@@ -1,4 +1,7 @@
 package edu.ulima.prueba.model;
+
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -10,9 +13,9 @@ import lombok.Data;
 public class Comprador extends Usuario {
     private String distrito;
     private String direccion;
-    private Tienda[] tiendasFavoritas;
-    private OrdenCompra[] historialPedidos;
-    private Producto[] carritoCompras;
-    private Producto[] listaDeseados;
+    private ArrayList<Long> tiendasFavoritas = new ArrayList<Long>();
+    private ArrayList<OrdenCompra> historialPedidos;
+    private ArrayList<Long> carritoCompras = new ArrayList<Long>();
+    private ArrayList<Long> listaDeseados = new ArrayList<Long>();
     private String categoriaPreferida;
 }

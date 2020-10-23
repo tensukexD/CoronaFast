@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +22,8 @@ public class ResultadosBusqueda {
     public String Retornarpag(Model model, HttpServletRequest req, String strBusqueda){
         String userid = (String) req.getSession().getAttribute("idingresado");
         String tipo = (String) req.getSession().getAttribute("tipo");
+
+        model.addAttribute("userid", userid);
 
         if(userid == null){
             return "redirect:/";

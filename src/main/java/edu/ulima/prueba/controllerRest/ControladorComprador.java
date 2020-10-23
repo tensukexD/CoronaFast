@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.ulima.prueba.model.Comprador;
+import edu.ulima.prueba.model.Tienda;
 import edu.ulima.prueba.repository.CompradorRepository;
 
 
@@ -98,7 +99,57 @@ public ResponseEntity<Comprador> listarusuarioporid(@PathVariable("id") Long id)
         
     return new ResponseEntity<Comprador>(current, HttpStatus.OK);
     }
+
+@RequestMapping(value = "compradores/{idComprador}/agregarTienda/{idTienda}", method = RequestMethod.PUT)
+public ResponseEntity<Void> agregarTiendaFav(@PathVariable("idComprador") Long idComprador, @PathVariable("idTienda") Long idTienda){
+
+    Comprador comprador = null;
+
+    Optional<Comprador> l = lRepository.findById(idComprador);
+    comprador=l.get();
+    ArrayList<Long> tiendas = comprador.getTiendasFavoritas();
+    tiendas.add(idTienda);
+
+    comprador.setTiendasFavoritas(tiendas);
+
+    lRepository.save(comprador);
+    return new ResponseEntity<Void>(HttpStatus.OK);
 }
+
+@RequestMapping(value = "compradores/{idComprador}/agregarProducto/{idProducto}", method = RequestMethod.PUT)
+public ResponseEntity<Void> agregarProductoFav(@PathVariable("idComprador") Long idComprador, @PathVariable("idProducto") Long idProducto){
+
+    Comprador comprador = null;
+
+    Optional<Comprador> l = lRepository.findById(idComprador);
+    comprador=l.get();
+    ArrayList<Long> productos = comprador.getListaDeseados();
+    productos.add(idProducto);
+
+    comprador.setListaDeseados(productos);
+
+    lRepository.save(comprador);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+@RequestMapping(value = "compradores/{idComprador}/agregarCarrito/{idProducto}", method = RequestMethod.PUT)
+public ResponseEntity<Void> agregarCarrito(@PathVariable("idComprador") Long idComprador, @PathVariable("idProducto") Long idProducto){
+
+    Comprador comprador = null;
+
+    Optional<Comprador> l = lRepository.findById(idComprador);
+    comprador=l.get();
+
+    ArrayList<Long> carrito = comprador.getCarritoCompras();
+    carrito.add(idProducto);
+
+    comprador.setCarritoCompras(carrito);
+
+    lRepository.save(comprador);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+}
+}
+
 
 /*@RequestMapping(value="usuarios/mostrar/{estado}",method=RequestMethod.GET)
 public ResponseEntity<List<Vendedor>> ListarUsuariosporEstado(@PathVariable("estado") String estado){
