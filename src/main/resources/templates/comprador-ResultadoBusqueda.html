@@ -199,16 +199,7 @@
       }
       </script>
 
-    <!--Script botones de producto-->
-    <script th:inline="javascript">
-
-      /*<![CDATA[*/
-      var idUsuario = /*[[${userid}]]*/ 'userid';
-      var idProducto = /*[[${l.idProducto}]]*/ 'lista';
-      var idTienda = /*[[${l.idUsuario}]]*/ 'tiendaid';
-      /*]]>*/ 
-
-    </script>
+    
 
 
   <!-- /.container -->
@@ -225,9 +216,18 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!--Script botones de producto-->
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+      var idUsuario = /*[[${userid}]]*/ 'default';
+    /*]]>*/ 
+  </script>
+  
   <!--  Buscador.js -->
   <script src="../js/buscador.js"></script>
 
 </body>
+
+
 
 </html>
