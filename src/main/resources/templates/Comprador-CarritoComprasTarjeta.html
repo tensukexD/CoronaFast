@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CoronaFast - Carrito de Compras</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/coronavirus.png" />
+
+
+  <!-- Bootstrap Jquery Popper BootstrapJS-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  <!--Iconos-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <!-- Estilos propios -->
+  <link href="../css/Comprador-CarritoComprasComprarTarjeta.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+ <!-- Barra superior -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/PaginaPrincipalComprador/">CoronaFast</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <!-- Barra de busqueda-->
+    <div class="d-flex justify-content-center h-100" style="padding-left: 50px;">
+      <form action="/ResultadosBusqueda/" method="POST">
+          <div class="searchbar">
+              <input class="search_input" type="text" name="strBusqueda" placeholder="Busca otro artículo">
+              <button type="submit" class="search_icon"><i class="fas fa-search"></i></a>
+          </div>
+      </form>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+
+
+      <!--Este por si deseamos activar el boton
+      <li class="nav-item active">
+      </li>
+      -->
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-bell"></i> </a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-shopping-bag"></i> Mis compras
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+          
+
+        </div>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> Mi cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/DatosComprador/"><i class="far fa-user"></i>  Mi perfil</a>              
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout/"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+</nav>
+
+
+  <!-- Contenido de página -->
+  <div class="container mt-5 p-3 rounded cart">
+    <div class="row no-gutters">
+        <div class="col-md-8">
+            <div class="product-details mr-2">
+                <div class="d-flex flex-row align-items-center"><i class="fa fa-long-arrow-left"></i><span class="ml-2">Finalizar orden</span></div>
+                <hr>
+                
+                
+                
+                <div class="form-group" style="padding-top: 10px;">
+                  <label for="direccion" ></label> Direccion de envío </label>
+                  <textarea class="form-control" id="direccion" rows="2"></textarea>
+                </div>
+
+                <div class="form-group" style="padding-top: 10px;">
+                  <label for="direccion" ></label> Nota al vendedor </label>
+                  <textarea class="form-control" id="nota" rows="2"></textarea>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="payment-info">
+                <div class="d-flex justify-content-between align-items-center"><span>Detalles de la tarjeta</span><img class="rounded" src="https://uvm.cdn-capital.digital/img/2018/12/primera-tarjeta-de-cr%C3%A9dito.jpg" width="30"></div>
+                <span class="type d-block mt-3 mb-1">Tipo de tarjeta</span><label class="radio"> <input type="radio" name="card" value="payment" checked> <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span> </label>
+                <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png" /></span> </label>
+                <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30" src="https://img.icons8.com/officel/48/000000/paypal.png" /></span> </label>
+
+                <div><label class="credit-card-label">Nombres en la tarjeta</label><input type="text" class="form-control credit-inputs" placeholder="Nombre"></div>
+                <div><label class="credit-card-label">Numero de la tarjeta</label><input type="text" class="form-control credit-inputs" placeholder="0000 0000 0000 0000"></div>
+                <div class="row">
+                    <div class="col-md-6"><label class="credit-card-label">Fecha</label><input type="text" class="form-control credit-inputs" placeholder="12/30"></div>
+                    <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text" class="form-control credit-inputs" placeholder="123"></div>
+                </div>
+                <hr class="line">
+                <div class="d-flex justify-content-between information"><span>Subtotal</span><span>S/. 42069.00</span></div>
+                <div class="d-flex justify-content-between information"><span>Costo de envío</span><span>S/. 69.00</span></div>
+                <div class="d-flex justify-content-between information"><span>Total (Incl. impuestos)</span><span>S/. 420138</span></div>
+                <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="button">
+                <span>S/. 420138.00</span><span>Pagar<i class="fa fa-long-arrow-right ml-1"></i></span></button>
+            </div>
+        </div>
+    </div>
+</div>	
+
+
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Coronamigos SAC 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
