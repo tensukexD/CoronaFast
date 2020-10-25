@@ -120,7 +120,7 @@
                             <a class="thumbnail pull-left" href="#"> <img class="media-object" th:src="${l.imagen}" style="width: 72px; height: 72px; padding-right: 5px"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><p th:id="'nombreProducto' + ${l.idProducto}" th:text="${l.nombreProducto}"></p></h4>
-                                <h5 class="media-heading"> Por: <span th:text="${l.nombreProducto}"></span></h5>
+                                <h5 class="media-heading"> Por: <span th:text="${l.nombreTienda}"></span></h5>
                                 <span>Estado: </span>
                                 <span class="text-success" th:switch="${l.cantStock}">
                                   <strong th:case="0">Sin stock</strong>
