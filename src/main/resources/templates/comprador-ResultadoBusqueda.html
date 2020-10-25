@@ -140,18 +140,26 @@
 
       <!--Cuerpo-->
 
-            <tr th:each="l : ${productosLista}" >
-                <form method="GET">
+            <tr th:each="l : ${productosLista}" > 
                 <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
                 <td th:text="${l.nombreProducto}"></td>
                 <td th:text="${l.categoria}"></td>
                 <td>
                   <a href="">Enlace Tienda</a> 
-                  <button id="botonTiendaFav" type="button" class="btn btn-info">Favorita</button></td> <!--Se puede hacer con js-->
-                
-                <td> <button id="botonProdFav" type="button" class="btn btn-info">Agregar Producto a Favoritos</button> </td> <!--Se puede hacer con js-->
-                <td> <button id="botonCarrito" type="button" class="btn btn-info">Añadir al Carrito de compras</button> </td> <!--Se puede hacer con js-->
-                </form>
+                  <form action="/ResultadosBusqueda/tiendaFav/" method="POST">
+                    <input type="hidden" name="idTienda" th:value="${l.idUsuario}"/><button id="botonTiendaFav" type="submit" class="btn btn-info">Favorita</button>
+                  </form>
+                </td>
+                <td> 
+                  <form method="POST" action="/ResultadosBusqueda/agregarFav/">
+                  <input type="hidden" name="idProducto" th:value="${l.idProducto}"/> <button id="botonProdFav" type="submit" class="btn btn-info">Agregar Producto a Favoritos</button>
+                  </form> 
+                </td>
+                <td> 
+                  <form method="POST" action="/ResultadosBusqueda/agregarCarrito/">
+                  <input type="hidden" name="idProducto" th:value="${l.idProducto}"/> <button id="botonCarrito" type="submit" class="btn btn-info">Añadir al Carrito de compras</button> 
+                  </form> 
+                </td>
             </tr>
     </table>
     </div>
@@ -215,17 +223,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!--Script botones de producto-->
-  <script th:inline="javascript">
-    /*<![CDATA[*/
-      var idUsuario = /*[[${userid}]]*/ 'default';
-    /*]]>*/ 
-  </script>
-  
-  <!--  Buscador.js -->
-  <script src="../js/buscador.js"></script>
-
 </body>
 
 
