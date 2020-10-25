@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import edu.ulima.prueba.model.Tienda;
 import edu.ulima.prueba.model.Vendedor;
+import edu.ulima.prueba.model.Producto;
 
 @Controller
 @RequestMapping("/EditarDatosVendedor")
@@ -36,23 +37,40 @@ public class EditarDatosvendedor {
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String EditarTiendayVendedor(String razonSocial,String ruc, String nombre, String distrito,String direccion, String telefono, HttpServletRequest req){
         Tienda tiendaeditada=new Tienda();
-       Vendedor vendedoreditado=new Vendedor();
-       String userid = (String) req.getSession().getAttribute("idingresado");
+        Vendedor vendedoreditado=new Vendedor();
+
+        String userid = (String) req.getSession().getAttribute("idingresado");
         tiendaeditada.setNombreTienda(razonSocial);
         tiendaeditada.setRUC(ruc);
         tiendaeditada.setTelefono(telefono);
         tiendaeditada.setDireccion(direccion);
         tiendaeditada.setDistrito(distrito);
-
-
         vendedoreditado.setNombre(nombre);
         vendedoreditado.setTelefono(telefono);
         RestTemplate rest = new RestTemplate();
         RestTemplate rest2 = new RestTemplate();
+        RestTemplate rest3 = new RestTemplate();
         String link = "http://localhost:8080/revisarTienda/tienda/actualizar/"+userid;
         String link2 = "http://localhost:8080/revisarVendedores/vendedores/actualizar/"+userid;
         rest.put(link2, vendedoreditado, Vendedor.class);
         rest2.put(link, tiendaeditada, Tienda.class);
+        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://localhost:8080/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
+        Producto[] arrProduc = listaProductos.getBody();
+        for (int i = 0; i < arrProduc.length; i++) {
+            Producto productodistrito = new Producto();
+            String link3 = "http://localhost:8080/revisarProductos/productos/actualizar/"+arrProduc[i].getIdProducto();
+            productodistrito.setImagen(arrProduc[i].getImagen());
+            productodistrito.setNombreProducto(arrProduc[i].getNombreProducto());
+            productodistrito.setCategoria(arrProduc[i].getCategoria());
+            productodistrito.setPrecio(arrProduc[i].getPrecio()); 
+            productodistrito.setCantStock(arrProduc[i].getCantStock());
+            productodistrito.setPuntuacion(arrProduc[i].getPuntuacion());
+            productodistrito.setNombreTienda(razonSocial);
+            productodistrito.setDistrito(distrito);
+            rest3.put(link3, productodistrito, Producto.class);
+
+        }
         return "redirect:/PaginaPrincipalVendedor/";
     }
+
 }

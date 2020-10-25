@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import edu.ulima.prueba.model.Producto;
-
+import edu.ulima.prueba.model.Tienda;
 @Controller
 @RequestMapping("/EditarProducto/{id}")
 public class EditarProducto {
@@ -28,7 +28,11 @@ public class EditarProducto {
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editarProducto(@PathVariable("id") String id, String nombreProducto, String categoria, String imagen, String precio, String cantStock, HttpServletRequest req){
-        
+        String userid = (String) req.getSession().getAttribute("idingresado");
+        RestTemplate rest2=new RestTemplate();
+        String link="http://localhost:8080/revisarTienda/tienda/seleccionar/"+userid;
+        ResponseEntity<Tienda>datostienda=rest2.getForEntity(link,Tienda.class); 
+
         Producto producto = new Producto();
         producto.setNombreProducto(nombreProducto);
         producto.setCategoria(categoria);
@@ -36,9 +40,12 @@ public class EditarProducto {
         producto.setPrecio(Float.parseFloat(precio));
         producto.setCantStock(Integer.parseInt(cantStock));
 
+        producto.setDistrito(datostienda.getBody().getDistrito());
+        producto.setNombreTienda(datostienda.getBody().getNombreTienda());
+
         RestTemplate rest = new RestTemplate();
-        String link = "http://localhost:8080/revisarProductos/productos/actualizar/"+id;
-        rest.put(link, producto, Producto.class);
+        String link2 = "http://localhost:8080/revisarProductos/productos/actualizar/"+id;
+        rest.put(link2, producto, Producto.class);
         return "redirect:/PaginaPrincipalVendedor/";
     }
 }

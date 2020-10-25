@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import edu.ulima.prueba.model.Producto;
-
+import edu.ulima.prueba.model.Tienda;
 @Controller
 @RequestMapping("/AgregarProducto")
 public class AgregarProducto {
@@ -38,13 +38,17 @@ public class AgregarProducto {
         Producto producto = new Producto();
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest = new RestTemplate();
-
+        String link2 ="http://localhost:8080/revisarTienda/tienda/seleccionar/"+userid;
+        Tienda tienda =rest.getForObject(link2, Tienda.class);
+        
         producto.setIdUsuario(Long.parseLong(userid));
         producto.setNombreProducto(nombreProducto);
         producto.setImagen(url);
         producto.setCategoria(categoria);
         producto.setPrecio(Float.parseFloat(precio));
         producto.setCantStock(Integer.parseInt(stock));
+        producto.setDistrito(tienda.getDistrito());
+        producto.setNombreTienda(tienda.getNombreTienda());
 
         String link = "http://localhost:8080/revisarProductos/productos/agregar";
 
