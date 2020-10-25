@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CoronaFast - Lista de deseados</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../imagenes/coronavirus.png" />
+
+
+  <!-- Bootstrap Jquery Popper BootstrapJS-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  <!--Iconos-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <!-- Estilos propios -->
+  <link href="../css/Comprador-TiendasFavoritas.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+ <!-- Barra superior -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/PaginaPrincipalComprador/">CoronaFast</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <!-- Barra de busqueda-->
+    <div class="d-flex justify-content-center h-100" style="padding-left: 50px;">
+      <form action="/ResultadosBusqueda/" method="POST">
+          <div class="searchbar">
+              <input class="search_input" type="text" name="strBusqueda" placeholder="Busca otro artículo">
+              <button type="submit" class="search_icon"><i class="fas fa-search"></i></a>
+          </div>
+      </form>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+
+
+      <!--Este por si deseamos activar el boton
+      <li class="nav-item active">
+      </li>
+      -->
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-bell"></i> </a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-shopping-bag"></i> Mis compras
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+          
+
+        </div>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> Mi cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/DatosComprador/"><i class="far fa-user"></i>  Mi perfil</a>              
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout/"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+</nav>
+
+
+
+  <!-- Contenido de página -->  
+
+  <div class="p-4 container">
+    <h3 style="padding:10px;"> Tiendas favoritas </h3>
+
+<div class="form-group row">
+  <div class="col-md-3">
+    <!--Buscar por nombre-->
+    <input type="text" class="form-control" aria-label="Search" id="myInput" onkeyup="filtrarNombre()" placeholder="Buscar por nombre de tienda" title="Busca por nombre" style="margin-bottom: 5px; margin-left: 20px;">
+  </div>
+
+</div>
+  
+
+  <div class="container">
+            <table class="table table-hover" id="tablaProductos">
+              <!--cabecera-->
+              <tr class="header" >
+                   
+                        <th>Nombre de tienda </th>
+                        
+                     
+                        
+                        <th>Quitar</th>
+                   
+              <tr>
+
+              <!--Cuerpo-->
+              <tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left"> <img class="media-object" src="https://img1.ibay.com.mv/is1/full/2020/04/item_2957885_138.png" style="width: 72px; height: 72px; padding-right: 5px"> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="padding-top: 20px; padding-left: 10px;"><a href="#">Nombre Tienda</a></h4>
+                            </div>
+                        </div></td>
+                       
+                        
+                        <td class="col-sm-1 col-md-1">
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span> Quitar
+                        </button></td>
+              </tr>                      
+
+               
+
+            </table>
+       
+</div>
+
+
+
+    <!--Script de busqueda por nombre-->
+    <script>
+      function filtrarNombre() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tablaProductos");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
+
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Coronamigos SAC 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
