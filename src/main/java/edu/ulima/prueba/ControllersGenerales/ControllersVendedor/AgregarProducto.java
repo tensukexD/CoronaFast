@@ -38,6 +38,7 @@ public class AgregarProducto {
         Producto producto = new Producto();
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest = new RestTemplate();
+        
 
         producto.setIdUsuario(Long.parseLong(userid));
         producto.setNombreProducto(nombreProducto);
