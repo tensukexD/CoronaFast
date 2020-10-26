@@ -145,7 +145,7 @@
                 <td th:text="${l.nombreProducto}"></td>
                 <td th:text="${l.categoria}"></td>
                 <td>
-                  <a href="">Enlace Tienda</a> 
+                  <a th:href="@{/CompradorPaginaVendedor/{y} (y=${l.idUsuario})}">Enlace Tienda</a> 
                   <form action="/ResultadosBusqueda/tiendaFav/" method="POST">
                     <input type="hidden" name="idTienda" th:value="${l.idUsuario}"/><button id="botonTiendaFav" type="submit" class="btn btn-info">Favorita</button>
                   </form>
