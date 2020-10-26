@@ -113,7 +113,16 @@ public ResponseEntity<List<Producto>> listarCategoria(@PathVariable("categorias"
             
     return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
     }
-
+@RequestMapping(value="producto/ubicacion/{ubicacion}",method=RequestMethod.GET)
+    public ResponseEntity<List<Producto>> listarubicacion(@PathVariable("ubicacion") String ubicacion){
+        
+        List<Producto>  l =lRepository.findByDistrito(ubicacion);
+        
+        //HttpHeaders headers=new HttpHeaders();
+        //headers.setLocation(uri.path("/usuarios/mostrar").buildAndExpand().toUri()); 
+                
+        return new ResponseEntity<List<Producto>>(l, HttpStatus.OK);
+        }
 /*@RequestMapping(value="producto/seleccionar/{usuarios}",method=RequestMethod.GET)
 public ResponseEntity<List<Producto>> listarUsuario(@PathVariable("usuarios") Long idUsuario){
     

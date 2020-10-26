@@ -212,6 +212,7 @@
                    ???
                    
                 </div>
+                              
                 <ul class="rating" style="padding-top: 20px;">
                     <li class="fa fa-star"></li>
                     <li class="fa fa-star"></li>
@@ -222,8 +223,10 @@
             </div>
         </div>
     </div>
+  </div>
+
       <!--FILAA2 -->
-    </div>
+    
     <div class="row">
         <div class="col-md-3 col-sm-6" th:each="j : ${listoncategorico2}">
             <div class="product-grid3">
@@ -234,9 +237,9 @@
                     </a>
                     <ul class="social">
                         <li><form method="POST" 
-                            ><input type="hidden" name="idtienda" th:value="${l.idUsuario}"/> <i class="fa fa-shopping-bag"></i></form></li>
+                            ><input type="hidden" name="idtienda" th:value="${j.idUsuario}"/> <i class="fa fa-shopping-bag"></i></form></li>
                         <li><form method="POST" 
-                            ><input type="hidden" name="idproducto" th:value="${l.idProducto}"/> <i class="fa fa-shopping-cart"></i></form></li>
+                            ><input type="hidden" name="idproducto" th:value="${j.idProducto}"/> <i class="fa fa-shopping-cart"></i></form></li>
                     </ul>
                     
                 </div>
@@ -259,115 +262,32 @@
         </div>
         
         </div>
-</div>
+      </div>
 <!--FILA 3-->
 <hr>
 <h1 style="padding-bottom: 10px;"> Cerca de tí </h1>
-
+<div class="container">
 <div class="row">
-  <div class="col-md-3 col-sm-6">
+  <div class="col-md-3 col-sm-6" th:each="m : ${listonubicacion1}">
       <div class="product-grid3">
           <div class="product-image3">
               <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-1.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-2.jpg">
+                  <img class="pic-1" th:src="${m.imagen}">
+                 
               </a>
               <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                <li><form method="POST" 
+                  ><input type="hidden" name="idtienda" th:value="${m.idUsuario}"/> <i class="fa fa-shopping-bag"></i></form></li>
+              <li><form method="POST" 
+                  ><input type="hidden" name="idproducto" th:value="${m.idProducto}"/> <i class="fa fa-shopping-cart"></i></form></li>
               </ul>
-              <span class="product-new-label">New</span>
+             
           </div>
           <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star disable"></li>
-                  <li class="fa fa-star disable"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-3.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-4.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-              <div class="price">
-                  $43.50
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-5.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-6.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">New</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star disable"></li>
-                  <li class="fa fa-star disable"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-7.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-8.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">New</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
+              <h3 class="title" th:text="${m.nombreProducto}"><a href="#">???</a></h3>
+              <div class="price"  th:text="${m.precio}">
+                 ???
+                  
               </div>
               <ul class="rating" style="padding-top: 20px;">
                   <li class="fa fa-star"></li>
@@ -380,124 +300,40 @@
       </div>
   </div>
 </div>
-
 <!--Fila 4-->
 
 <div class="row">
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-1.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-2.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">New</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star disable"></li>
-                  <li class="fa fa-star disable"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-3.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-4.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-              <div class="price">
-                  $43.50
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-5.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-6.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">New</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star disable"></li>
-                  <li class="fa fa-star disable"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-      <div class="product-grid3">
-          <div class="product-image3">
-              <a href="#">
-                  <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-7.jpg">
-                  <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo4/images/img-8.jpg">
-              </a>
-              <ul class="social">
-                  <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">New</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title"><a href="#">Men's Blazer</a></h3>
-              <div class="price">
-                  $63.50
-                  <span>$75.00</span>
-              </div>
-              <ul class="rating" style="padding-top: 20px;">
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star"></li>
-                  <li class="fa fa-star disable"></li>
-                  <li class="fa fa-star disable"></li>
-              </ul>
-          </div>
-      </div>
-  </div>
+  <div class="col-md-3 col-sm-6" th:each="n : ${listonubicacion2}">
+    <div class="product-grid3">
+        <div class="product-image3">
+            <a href="#">
+                <img class="pic-1" th:src="${n.imagen}">
+               
+            </a>
+            <ul class="social">
+              <li><form method="POST" 
+                ><input type="hidden" name="idtienda" th:value="${n.idUsuario}"/> <i class="fa fa-shopping-bag"></i></form></li>
+            <li><form method="POST" 
+                ><input type="hidden" name="idproducto" th:value="${n.idProducto}"/> <i class="fa fa-shopping-cart"></i></form></li>
+            </ul>
+           
+        </div>
+        <div class="product-content">
+            <h3 class="title" th:text="${n.nombreProducto}"><a href="#">???</a></h3>
+            <div class="price"  th:text="${n.precio}">
+               ???
+                
+            </div>
+            <ul class="rating" style="padding-top: 20px;">
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+                <li class="fa fa-star disable"></li>
+                <li class="fa fa-star disable"></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </div>
 </div>
         <!-- /.row -->

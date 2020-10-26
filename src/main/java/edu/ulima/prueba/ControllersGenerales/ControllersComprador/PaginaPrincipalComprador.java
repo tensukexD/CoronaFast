@@ -109,9 +109,9 @@ public class PaginaPrincipalComprador {
             }  
        }
        RestTemplate rest3=new RestTemplate();
-        //String link3="http://localhost:8080/revisarProductos/producto/seleccionar/"+comprador.getDistrito();
-        String link3="http://localhost:8080/revisarProductos/producto/seleccionar/"+comprador.getBody().getCategoriaPreferida();
-       ResponseEntity<Producto[]>productosubicacion=rest3.getForEntity(link2,Producto[].class); 
+        String link3="http://localhost:8080/revisarProductos/producto/ubicacion/"+comprador.getBody().getDistrito();
+       // String link3="http://localhost:8080/revisarProductos/producto/seleccionar/"+comprador.getBody().getCategoriaPreferida();
+       ResponseEntity<Producto[]>productosubicacion=rest3.getForEntity(link3,Producto[].class); 
         Producto[] productosubicacionr=productosubicacion.getBody();
         Producto[] productosubicacionfinal=new Producto[8];
         ArrayList numbers2 = new ArrayList();
@@ -127,7 +127,7 @@ public class PaginaPrincipalComprador {
                 
                
              numero2=(Integer)numbers2.get(i);
-             productosubicacionfinal[i]=productosubicacionr[numero];  
+             productosubicacionfinal[i]=productosubicacionr[numero2];  
                      }
                 Producto[] productosubicacionalesfinal1=new Producto[4];
                Producto[] productosubicacionalesfinal2=new Producto[4];
