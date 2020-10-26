@@ -133,11 +133,11 @@
                     <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text" class="form-control credit-inputs" placeholder="123"></div>
                 </div>
                 <hr class="line">
-                <div class="d-flex justify-content-between information"><span>Subtotal</span><span>S/. 42069.00</span></div>
-                <div class="d-flex justify-content-between information"><span>Costo de envío</span><span>S/. 69.00</span></div>
-                <div class="d-flex justify-content-between information"><span>Total (Incl. impuestos)</span><span>S/. 420138</span></div>
+                <div class="d-flex justify-content-between information"><span>Subtotal</span><span th:text="'$' + ${precioSubTotal}"></span></div>
+                <div class="d-flex justify-content-between information"><span>Costo de envío</span><span th:text="'$' + ${precioEnvio}"></span></div>
+                <div class="d-flex justify-content-between information"><span>Total (Incl. impuestos)</span><span th:text="'$' + ${precioTotal}"></span></div>
                 <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="button">
-                <span>S/. 420138.00</span><span>Pagar<i class="fa fa-long-arrow-right ml-1"></i></span></button>
+                <span></span><span>Pagar<i class="fa fa-long-arrow-right ml-1"></i></span></button>
             </div>
         </div>
     </div>
