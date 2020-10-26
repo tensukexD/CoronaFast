@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -183,5 +184,28 @@ public class PaginaPrincipalComprador {
         return "tienda-PaginaPrincipalComprador";
         
     }
-    
+    @PostMapping(value = "/agregarCarrito")
+    public String agregarcarrito(Model model, HttpServletRequest req, String idproducto){
+
+        String idUsuario = (String) req.getSession().getAttribute("idingresado");
+
+        RestTemplate rest = new RestTemplate();
+
+        Producto p = new Producto();
+
+        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarCarrito/"+idproducto;
+
+        rest.put(url, p, Producto.class); 
+
+        return "redirect:/CarritoCompras/";//falta agregar
+    }
+
+    @PostMapping(value = "/dirigirseatienda")
+    public String iratienda(Model model, HttpServletRequest req, String idtienda){
+
+       
+
+        return "redirect:/VisualizarTienda/";//falta agregar
+    }
+
 }

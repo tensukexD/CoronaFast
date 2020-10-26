@@ -201,7 +201,7 @@
                 <ul class="social">
                     <li><form method="POST" 
                         ><input type="hidden" name="idtienda" th:value="${l.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-                    <li><form method="POST" 
+                    <li><form method="POST"  action="/PaginaPrincipalComprador/agregarCarrito/"
                         ><input type="hidden" name="idproducto" th:value="${l.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
                 </ul>
                 
@@ -238,7 +238,7 @@
                     <ul class="social">
                         <li><form method="POST" 
                             ><input type="hidden" name="idtienda" th:value="${j.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-                        <li><form method="POST" 
+                        <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
                             ><input type="hidden" name="idproducto" th:value="${j.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
                     </ul>
                     
@@ -278,7 +278,7 @@
               <ul class="social">
                 <li><form method="POST" 
                   ><input type="hidden" name="idtienda" th:value="${m.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-              <li><form method="POST" 
+              <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
                   ><input type="hidden" name="idproducto" th:value="${m.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
               </ul>
              
@@ -313,7 +313,7 @@
             <ul class="social">
               <li><form method="POST" 
                 ><input type="hidden" name="idtienda" th:value="${n.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-            <li><form method="POST" 
+            <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
                 ><input type="hidden" name="idproducto" th:value="${n.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
             </ul>
            
