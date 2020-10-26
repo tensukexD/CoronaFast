@@ -15,14 +15,14 @@ public class OrdenCompra {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Id
     private Long idTransaccion;
-
-    private String idUsuarioComprador;
-    
-    private String idProducto;
-    private String resena;
+    private Long idUsuarioVendedor;
+    private Long idUsuarioComprador;
+    private String direccionexacta;
+    private Long idProducto;
+    private String nota;
     private String fechaCompra;
-    private Producto totalProductos[];
+    private int cantidad;
     private String estado;
-    private int total;
+    private float total;
     
 }

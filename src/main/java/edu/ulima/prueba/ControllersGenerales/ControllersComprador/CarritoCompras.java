@@ -74,19 +74,13 @@ public class CarritoCompras {
     }
     @PostMapping(value="/comprar")
     public String comprarcarrito(@RequestParam("quantity[]") List<String> quantity,String inputotal, HttpServletRequest req,Model model ){
-
+        String[] array = new String[quantity.size()];
+         array=quantity.toArray(array);
+        req.getSession().setAttribute("cantidadproductosCompra", array);
+        req.getSession().setAttribute("preciototalCompra", inputotal);
+        String[] prueba1=(String[])req.getSession().getAttribute("cantidadproductos");
         
-        System.out.println(quantity);
-        System.out.println(quantity);
-        System.out.println(quantity);
-        System.out.println(quantity);
-        System.out.println(quantity);
-        System.out.println(inputotal);
-        System.out.println(inputotal);
-        System.out.println(inputotal);
-        System.out.println(inputotal);
-
-        return "redirect:/CarritoCompras/";
+        return "redirect:/PagodePedido/";
     }
     
 }

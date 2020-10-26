@@ -98,7 +98,7 @@
 
   <!-- Contenido de página -->
   <div class="container mt-5 p-3 rounded cart">
-    <div class="row no-gutters">
+    <form  method="POST" action="/PagodePedido/comprar/" id="datospago"><div class="row no-gutters"></form>
         <div class="col-md-8">
             <div class="product-details mr-2">
                 <div class="d-flex flex-row align-items-center"><i class="fa fa-long-arrow-left"></i><span class="ml-2">Finalizar orden</span></div>
@@ -108,12 +108,12 @@
                 
                 <div class="form-group" style="padding-top: 10px;">
                   <label for="direccion" ></label> Direccion de envío </label>
-                  <textarea class="form-control" id="direccion" rows="2"></textarea>
+                  <textarea class="form-control" id="direccion" rows="2" form="datospago"></textarea>
                 </div>
 
                 <div class="form-group" style="padding-top: 10px;">
                   <label for="direccion" ></label> Nota al vendedor </label>
-                  <textarea class="form-control" id="nota" rows="2"></textarea>
+                  <textarea class="form-control" id="nota" rows="2" form="datospago"></textarea>
                 </div>
 
                 
@@ -136,7 +136,7 @@
                 <div class="d-flex justify-content-between information"><span>Subtotal</span><span th:text="'$' + ${precioSubTotal}"></span></div>
                 <div class="d-flex justify-content-between information"><span>Costo de envío</span><span th:text="'$' + ${precioEnvio}"></span></div>
                 <div class="d-flex justify-content-between information"><span>Total (Incl. impuestos)</span><span th:text="'$' + ${precioTotal}"></span></div>
-                <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="button">
+                <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit" form="datospago">
                 <span></span><span>Pagar<i class="fa fa-long-arrow-right ml-1"></i></span></button>
             </div>
         </div>
