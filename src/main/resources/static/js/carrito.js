@@ -3,7 +3,7 @@ var subtotal = document.getElementById("precioSubTotal");
 var envio = document.getElementById("precioEnvio");
 var total = document.getElementById("precioTotal");
 var botonActualizar = document.getElementById("botonActualizar");
-
+var inputdeltotal = document.getElementById("escondido");
 
 
 var comprador;
@@ -85,6 +85,7 @@ function agregarPrecios(){
     subtotal.innerText = subTotalNumero.toString();
     envio.innerText = precioEnvio.toString();
     total.innerText = precioFinal.toString();
+    inputdeltotal.value=precioFinal.toString();
 }
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import edu.ulima.prueba.model.Comprador;
@@ -68,6 +69,22 @@ public class CarritoCompras {
         String link = "http://localhost:8080/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+idProducto;
 
         rest.put(link,null);
+
+        return "redirect:/CarritoCompras/";
+    }
+    @PostMapping(value="/comprar")
+    public String comprarcarrito(@RequestParam("quantity[]") List<String> quantity,String inputotal, HttpServletRequest req,Model model ){
+
+        
+        System.out.println(quantity);
+        System.out.println(quantity);
+        System.out.println(quantity);
+        System.out.println(quantity);
+        System.out.println(quantity);
+        System.out.println(inputotal);
+        System.out.println(inputotal);
+        System.out.println(inputotal);
+        System.out.println(inputotal);
 
         return "redirect:/CarritoCompras/";
     }

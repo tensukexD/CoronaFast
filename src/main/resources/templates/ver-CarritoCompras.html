@@ -99,6 +99,7 @@
   <!-- Contenido de página -->
 
   <div class="container" style="padding-top: 50px;">
+    <form method="POST" action="/CarritoCompras/comprar/" id="postearcantidades"></form>
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -128,15 +129,15 @@
                         </div></td>
                         <div>
                           <td class="col-sm-1 col-md-1" style="text-align: center">
-                            <input type="text" name="quantity" th:id="'cantidadProducto' + ${l.idProducto}" value="1" class="result"/>
+                            <input type="text" name="quantity[]" th:id="'cantidadProducto' + ${l.idProducto}" value="1" class="result" form="postearcantidades"/>
                           </td>
                           <td class="col-sm-1 col-md-1 text-center"><span th:id="'precioProducto' + ${l.idProducto}" th:text="'$' + ${l.precio}"></span></td>
                           
                           <td class="col-sm-1 col-md-1 text-center"><span th:id="'precioProductoTotal' + ${l.idProducto}" ></span></td>
                         </div>
                         <td class="col-sm-1 col-md-1">
-                          <form th:action="@{/CarritoCompras/quitar/{y}/ (y=${l.idProducto})}" method="POST">
-                            <button type="submit" class="btn btn-danger">
+                          <form th:action="@{/CarritoCompras/quitar/{y}/ (y=${l.idProducto})}" method="POST" id="quitarForm">
+                            <button type="submit" class="btn btn-danger" form="quitarForm">
                               <span class="glyphicon glyphicon-remove"></span> Quitar
                             </button>
                           </form>
@@ -161,7 +162,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$</strong><strong><span id="precioTotal"></span></strong></h3></td>
+                        <td class="text-right"><h3><strong>$</strong><strong><input type="hidden" name="inputotal" form="postearcantidades" id="escondido" /><span id="precioTotal"></span></strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
@@ -170,7 +171,7 @@
                         <td>
 
                         <td>
-                        <button type="button" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" form="postearcantidades">
                             Pagar <span class="glyphicon glyphicon-play"></span>
                         </button></td>
 
@@ -183,6 +184,7 @@
             </table>
         </div>
     </div>
+  
 </div>
   <!-- /.container -->
 
