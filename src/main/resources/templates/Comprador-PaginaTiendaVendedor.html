@@ -26,6 +26,7 @@
 
   <!-- Estilos propios -->
   <link href="../css/Comprador-PaginaTiendaVendedor.css" rel="stylesheet">
+  <link href="../../css/Comprador-PaginaTiendaVendedor.css" rel="stylesheet">
 
 
 </head>
@@ -72,7 +73,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+            <a class="dropdown-item" href="/ProductosFavoritos/"><i class="fas fa-star"></i> Lista de deseados</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/TiendasFavoritas/"><i class="fas fa-star"></i> Tiendas favoritas</a>
             
@@ -122,14 +123,14 @@
 
 
         <div class="list-group" style="padding-top: 20px;">
-          <a href="#" class="list-group-item">Comida</a>
-          <a href="#" class="list-group-item">Electronicos</a>
-          <a href="#" class="list-group-item">Accesorios</a>
-          <a href="#" class="list-group-item">Ropa</a>
-          <a href="#" class="list-group-item">Medicina</a>
-          <a href="#" class="list-group-item">Juguetes</a>
-          <a href="#" class="list-group-item">Limpieza</a>
-          <a href="#" class="list-group-item">Utiles de oficina</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/comida (y=${tienda.idUsuario})}" class="list-group-item">Comida</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/electronicos (y=${tienda.idUsuario})}" class="list-group-item">Electronicos</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/accesorios (y=${tienda.idUsuario})}" class="list-group-item">Accesorios</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/ropa (y=${tienda.idUsuario})}" class="list-group-item">Ropa</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/medicina (y=${tienda.idUsuario})}" class="list-group-item">Medicina</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/juguetes (y=${tienda.idUsuario})}" class="list-group-item">Juguetes</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/limpieza (y=${tienda.idUsuario})}" class="list-group-item">Limpieza</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/utilesOficina (y=${tienda.idUsuario})}" class="list-group-item">Utiles de oficina</a>
           
         </div>
 
