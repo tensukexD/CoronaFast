@@ -73,7 +73,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+          <a class="dropdown-item" href="/TiendasFavoritas/"><i class="fas fa-star"></i> Tiendas favoritas</a>
           
 
         </div>
@@ -125,20 +125,23 @@
               <tr>
 
               <!--Cuerpo-->
-              <tr>
+              <tr th:each="l : ${tiendas}">
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
                             <a class="thumbnail pull-left"> <img class="media-object" src="https://img1.ibay.com.mv/is1/full/2020/04/item_2957885_138.png" style="width: 72px; height: 72px; padding-right: 5px"> </a>
                             <div class="media-body">
-                                <h4 class="media-heading" style="padding-top: 20px; padding-left: 10px;"><a href="#">Nombre Tienda</a></h4>
+                                <h4 class="media-heading" style="padding-top: 20px; padding-left: 10px;"><a th:href="@{/CompradorPaginaVendedor/{y} (y=${l.idUsuario})}" th:text="${l.nombreTienda}">Nombre Tienda</a></h4>
                             </div>
                         </div></td>
                        
                         
                         <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Quitar
-                        </button></td>
+                          <form th:action="@{/TiendasFavoritas/quitar/{y} (y=${l.idUsuario})}" method="POST">
+                            <button type="submit" class="btn btn-danger">
+                              <span class="glyphicon glyphicon-remove"></span> Quitar
+                            </button>
+                          </form>
+                        </td>
               </tr>                      
 
                

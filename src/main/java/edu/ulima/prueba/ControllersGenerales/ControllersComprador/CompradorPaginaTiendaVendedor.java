@@ -51,5 +51,36 @@ public class CompradorPaginaTiendaVendedor {
         return "Comprador-PaginaTiendaVendedor";
     }
 
-    
+    @GetMapping(value = "/agregarTienda/{id}")
+    public String tiendaFavEnPag(HttpServletRequest req,Model model,@PathVariable("id") Long idTienda){
+
+        String idUsuario = (String) req.getSession().getAttribute("idingresado");
+
+        RestTemplate rest = new RestTemplate();
+
+        Tienda t  = new Tienda();
+
+        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarTienda/"+idTienda;
+
+        rest.put(url, t, Tienda.class);
+
+        return "redirect:/CompradorPaginaVendedor/"+idTienda;
+    }
+
+    /*@PostMapping(value = "/agregar/{id}")
+    public String agregarTiendaFav(HttpServletRequest req,Model model,@PathVariable("id") Long idTienda){
+
+        String idUsuario = (String) req.getSession().getAttribute("idingresado");
+
+        RestTemplate rest = new RestTemplate();
+
+        Tienda t  = new Tienda();
+
+        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarTienda/"+idTienda;
+
+        rest.put(url, t, Tienda.class);
+
+        return "redirect:/CompradorPaginaVendedor/";
+    }*/
+
 }

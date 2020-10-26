@@ -74,7 +74,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+            <a class="dropdown-item" href="/TiendasFavoritas/"><i class="fas fa-star"></i> Tiendas favoritas</a>
             
 
           </div>
@@ -111,7 +111,7 @@
     
     
     <span style="font-size: 40px; padding-top: 20px;" > Productos de <span th:text=${tienda.nombreTienda}></span>  
-        <a href="#"><button type="button" data-toggle="tooltip" data-placement="top" title="Añadir tienda a favoritos" class="btn btn-warning btn-circle btn-lg" style="margin-left: 10px; margin-bottom: 10px;"><i class="fas fa-star"></i></button></a>
+        <a th:href="@{/CompradorPaginaVendedor/agregarTienda/{y} (y=${tienda.idUsuario})}"><button type="button" data-toggle="tooltip" data-placement="top" title="Añadir tienda a favoritos" class="btn btn-warning btn-circle btn-lg" style="margin-left: 10px; margin-bottom: 10px;"><i class="fas fa-star"></i></button></a>
         <a href="#"> <button type="button" data-toggle="tooltip" data-placement="top" title="Reportar vendedor" class="btn btn-danger btn-circle btn-lg" style="margin-left: 5px; margin-bottom: 10px;" ><i class="fas fa-flag"></i></button></a>
     </span>
 
@@ -169,9 +169,11 @@
                       <img class="pic-2"  style="width: 180px; height: 230px;" th:src="${l.imagen}">
                   </a>
                   <ul class="social">
-                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
+                    <li><form method="POST"
+                        ><input type="hidden" name="idtienda" th:value="${l.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
+                    <li><form method="POST"  action="/PaginaPrincipalComprador/agregarCarrito/"
+                        ><input type="hidden" name="idproducto" th:value="${l.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+                </ul>
                   <span class="product-new-label">New</span>
               </div>
               <div class="product-content">
