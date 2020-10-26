@@ -71,9 +71,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+          <a class="dropdown-item" href="/ProductosFavoritos/"><i class="fas fa-star"></i> Lista de deseados</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+          <a class="dropdown-item" href="/TiendasFavoritas/"><i class="fas fa-star"></i> Tiendas favoritas</a>
           
 
         </div>
@@ -125,21 +125,24 @@
               <tr>
 
               <!--Cuerpo-->
-              <tr>
+              <tr th:each="l : ${productos}" >
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="https://plazavea.vteximg.com.br/arquivos/ids/214295-1000-1000/20144694.jpg?v=636903533667100000" style="width: 72px; height: 72px; padding-right: 5px"> </a>
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" th:src="${l.imagen}" style="width: 72px; height: 72px; padding-right: 5px"> </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">Nombre Producto</a></h4>
-                                <h6 class="media-heading"> Vendido por <a href="#">Nombre de la tienda</a></h6>
+                                <h4 class="media-heading"><span th:text="${l.nombreProducto}">Nombre Producto</span></h4>
+                                <h6 class="media-heading"> Vendido por: <a th:href="@{/CompradorPaginaVendedor/{y} (y=${l.idUsuario})}" th:text="${l.nombreTienda}">Nombre de la tienda</a></h6>
                             </div>
                         </div></td>
                        
-                        <td class="col-sm-1 col-md-1 text-center"><strong>S/.5</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><span th:text="'$' +${l.precio}"></span></strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Quitar
-                        </button></td>
+                          <form th:action="@{/ProductosFavoritos/quitar/{y} (y=${l.idProducto})}" method="POST">
+                            <button type="submit" class="btn btn-danger">
+                              <span class="glyphicon glyphicon-remove"></span> Quitar
+                            </button>
+                          </form>
+                        </td>
               </tr>                      
 
                

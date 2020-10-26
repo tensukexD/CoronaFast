@@ -176,6 +176,60 @@ public ResponseEntity<Void> eliminarCarrito(@PathVariable("idComprador") Long id
     return new ResponseEntity<Void>(HttpStatus.OK);
 }
 
+@RequestMapping(value = "compradores/{idComprador}/eliminarTienda/{idTienda}", method = RequestMethod.PUT)
+public ResponseEntity<Void> eliminarTienda(@PathVariable("idComprador") Long idComprador, @PathVariable("idTienda") Long idTienda){
+
+    Comprador comprador = null;
+
+    Optional<Comprador> l = lRepository.findById(idComprador);
+    comprador=l.get();
+
+    ArrayList<Long> tiendas = comprador.getTiendasFavoritas();
+
+    for(int i=0; i<tiendas.size(); i++){
+        System.out.println(tiendas.get(i));
+        System.out.println(idTienda);
+        System.out.println(tiendas.size());
+        if(String.valueOf(tiendas.get(i)).equals(String.valueOf(idTienda))){
+            tiendas.remove(i);
+            System.out.println(tiendas.size());
+        }
+        System.out.println(tiendas.size());
+    }
+
+    comprador.setTiendasFavoritas(tiendas);
+
+    lRepository.save(comprador);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+@RequestMapping(value = "compradores/{idComprador}/eliminarProducto/{idProducto}", method = RequestMethod.PUT)
+public ResponseEntity<Void> eliminarProducto(@PathVariable("idComprador") Long idComprador, @PathVariable("idProducto") Long idProducto){
+
+    Comprador comprador = null;
+
+    Optional<Comprador> l = lRepository.findById(idComprador);
+    comprador=l.get();
+
+    ArrayList<Long> productos = comprador.getListaDeseados();
+
+    for(int i=0; i<productos.size(); i++){
+        System.out.println(productos.get(i));
+        System.out.println(idProducto);
+        System.out.println(productos.size());
+        if(String.valueOf(productos.get(i)).equals(String.valueOf(idProducto))){
+            productos.remove(i);
+            System.out.println(productos.size());
+        }
+        System.out.println(productos.size());
+    }
+
+    comprador.setListaDeseados(productos);
+
+    lRepository.save(comprador);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
 }
 
 
