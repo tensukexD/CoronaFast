@@ -2,6 +2,9 @@
 var subtotal = document.getElementById("precioSubTotal");
 var envio = document.getElementById("precioEnvio");
 var total = document.getElementById("precioTotal");
+var botonActualizar = document.getElementById("botonActualizar");
+
+
 
 var comprador;
 var arregloProductos = [];
@@ -67,11 +70,13 @@ function obtenerProductos(){
 }
 
 function agregarPrecios(){
+    subTotalNumero = 0;
+    precioFinal = 0;
     for(let i=0; i<arregloCarrito.length;i++){
         cantidad = document.getElementById("cantidadProducto"+arregloCarrito[i].toString());
         precioTotal = document.getElementById("precioProductoTotal"+arregloCarrito[i].toString());
-        console.log(cantidad);
-        console.log(precioTotal);
+        console.log(cantidad.value);
+        console.log(precioTotal.value);
         subTotalNumero+=(parseFloat(cantidad.value)*parseFloat(productosCarrito[i].precio));
         precioTotal.innerText = "$"+(parseFloat(cantidad.value)*parseFloat(productosCarrito[i].precio)).toString();
     }
