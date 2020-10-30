@@ -10,12 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import edu.ulima.prueba.model.Comprador;
+
 import edu.ulima.prueba.model.OrdenCompra;
 import edu.ulima.prueba.model.Producto;
 import edu.ulima.prueba.model.Tienda;
@@ -40,12 +38,9 @@ public class ProductosComprados {
 
         RestTemplate rest=new RestTemplate();
 
-        Comprador comprador = new Comprador();
         List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
-        List<String> nombreTienda = new ArrayList<String>();
-        List<String> telefonoVendedor = new ArrayList<String>();  
 
-        String link="http://localhost:8080/revisarOrdenes/ordenesComprador/mostrar/"+userid;
+        String link="http://localhost:8080/RevisarOrdenes/ordenesComprador/mostrar/"+userid;
         ResponseEntity<OrdenCompra[]>listaOrdenesCompra=rest.getForEntity(link,OrdenCompra[].class); 
         
         ordenesCompra = Arrays.asList(listaOrdenesCompra.getBody());
