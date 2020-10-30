@@ -19,10 +19,14 @@ public class OrdenCompra {
     private Long idUsuarioComprador;
     private String direccionexacta;
     private Long idProducto;
+    private String imagen;
+    private String nombreProducto;
     private String nota;
     private String fechaCompra;
     private int cantidad;
     private String estado;
     private float total;
+    private String nombreTienda;
+    private String telefono;
     
 }

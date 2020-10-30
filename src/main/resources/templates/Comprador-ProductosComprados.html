@@ -69,11 +69,11 @@
             <i class="fas fa-shopping-bag"></i> Mis compras
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
+            <a class="dropdown-item" href="/ProductosComprados/"><i class="fas fa-plane-departure"></i> Mis pedidos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Lista de deseados</a>
+            <a class="dropdown-item" href="/ProductosFavoritos/"><i class="fas fa-star"></i> Lista de deseados</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-star"></i> Tiendas favoritas</a>
+            <a class="dropdown-item" href="/TiendasFavoritas/"><i class="fas fa-star"></i> Tiendas favoritas</a>
             
   
           </div>
@@ -128,41 +128,16 @@
 
       <!--Cuerpo-->
 
-            <tr th:each="l : ${productosComprados}">
-                <td scope="row" style="padding-right: 0px"> <img src="https://mercafree.com/wp-content/uploads/2020/04/gaseosa_coca_cola_original-46082.png" style="max-width: 100px;"> </td>
-                <td>Coca Cola de 500ml</td>
-                <td>2</td>
-                <td>S/.5</td>
-                <td>Pendiente</td>
-                <td>01/01/2020</td>
-                <td>el pepe</td>
-                <td>9696969696</td>
-                
+            <tr th:each="l : ${ordenesCompra}">
+                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
+                <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
+                <td th:text="${l.cantidad}">2</td>
+                <td th:text="${l.total}">S/.5</td>
+                <td th:text="${l.estado}">Pendiente</td>
+                <td th:text="${l.fechaCompra}">01/01/2020</td>
+                <td th:text="${l.nombreTienda}">el pepe</td>
+                <td th:text="${l.telefono}">9696969696</td>
             </tr>
-            
-            <tr >
-              <td scope="row" style="padding-right: 0px"> <img src="https://www.kroger.com/product/images/xlarge/front/0001200014092" style="max-width: 100px;"> </td>
-              <td>Pepsi de 500ml</td>
-              <td>3</td>
-              <td>S/.9</td>
-              <td>En camino</td>
-              <td>02/02/2020</td>
-              <td>ete sech</td>
-              <td>9494949494</td>
-              
-          </tr>
-
-          <tr >
-            <td scope="row" style="padding-right: 0px"> <img src="https://i.linio.com/p/640ed3b77502de4ed0db77398d829841-zoom.jpg" style="max-width: 100px;"> </td>
-            <td>Cargador USB magnético</td>
-            <td>2</td>
-            <td>S/.24</td>
-            <td>Aceptado</td>
-            <td>03/03/2020</td>
-            <td>pedro</td>
-            <td>949494944</td>
-        </tr>
-           
 
     </table>
     
