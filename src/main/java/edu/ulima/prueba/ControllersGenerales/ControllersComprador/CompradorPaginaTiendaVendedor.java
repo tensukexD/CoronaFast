@@ -143,7 +143,7 @@ public class CompradorPaginaTiendaVendedor {
         List<Producto> listaProductos2 = new ArrayList<Producto>();
         
         for(Producto p : productos){
-            if(p.getCategoria().equalsIgnoreCase("electronicos")){
+            if(p.getCategoria().equalsIgnoreCase("electrónicos")){
                 listaProductos2.add(p);
             }
         }

@@ -30,13 +30,24 @@ public class EditarDatoscomprador {
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editarComprador(String nombre, String distrito,String direccion, String telefono, String categoriaPreferida, HttpServletRequest req){
         
-        Comprador comprador = new Comprador();
         String userid = (String) req.getSession().getAttribute("idingresado");
+
+        String link2 = "http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+
+        RestTemplate rest2 = new RestTemplate();
+
+        Comprador compradorAntiguo = rest2.getForEntity(link2, Comprador.class).getBody();
+
+        Comprador comprador = new Comprador();
+        
         comprador.setNombre(nombre);
         comprador.setTelefono(telefono);
         comprador.setDireccion(direccion);
         comprador.setDistrito(distrito);
         comprador.setCategoriaPreferida(categoriaPreferida);
+        comprador.setCarritoCompras(compradorAntiguo.getCarritoCompras());
+        comprador.setListaDeseados(compradorAntiguo.getListaDeseados());
+        comprador.setTiendasFavoritas(compradorAntiguo.getTiendasFavoritas());
 
         RestTemplate rest = new RestTemplate();
         String link = "http://localhost:8080/revisarCompradores/compradores/actualizar/"+userid;

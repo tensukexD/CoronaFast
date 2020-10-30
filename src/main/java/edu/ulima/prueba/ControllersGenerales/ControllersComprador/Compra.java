@@ -65,7 +65,7 @@ public class Compra {
         ResponseEntity<Comprador>compradorResponse=rest.getForEntity(link,Comprador.class); 
         comprador = compradorResponse.getBody();
         ArrayList<Long> carrito=comprador.getCarritoCompras();
-                 System.out.println(prueba1);
+                System.out.println(prueba1);
                 System.out.println(prueba1);
                 System.out.println(prueba1);
                 System.out.println(prueba1);

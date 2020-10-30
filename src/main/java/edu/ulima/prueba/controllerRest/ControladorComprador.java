@@ -71,8 +71,8 @@ public ResponseEntity<Void> agregarUsuario(@RequestBody Comprador newComprador,
         current.setNombre(comprador.getNombre());
         current.setDistrito(comprador.getDistrito());
         current.setTelefono(comprador.getTelefono());
-        //current.setTiendasFavoritas(tienda.getTiendasFavoritas()); ARREGLO
-        //current.setCarritoCompras(tienda.getCarritoCompras()); ARREGLO
+        current.setTiendasFavoritas(comprador.getTiendasFavoritas()); 
+        current.setCarritoCompras(comprador.getCarritoCompras()); 
         current.setDireccion(comprador.getDireccion());
         current.setCategoriaPreferida(comprador.getCategoriaPreferida());
         lRepository.save(current);
