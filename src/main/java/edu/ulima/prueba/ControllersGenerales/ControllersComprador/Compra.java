@@ -40,7 +40,7 @@ public class Compra {
         String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>compradorResponse=rest.getForEntity(link,Comprador.class); 
         comprador = compradorResponse.getBody();
-       if(comprador.getCarritoCompras()==null || prueba1.equals(null)){
+       if(comprador.getCarritoCompras().get(0)==null || prueba1.equals("")){
 
            return "redirect:/CarritoCompras/";
         }
@@ -149,10 +149,10 @@ public class Compra {
             rest4.postForObject(link4, orden, OrdenCompra.class);
             
         }
-
-       comprador.setCarritoCompras(null);
-       req.getSession().setAttribute("cantidadproductosCompra", null);
-       req.getSession().setAttribute("preciototalCompra", null);
+        ArrayList<Long> carritoCompras = new ArrayList<Long>();
+       comprador.setCarritoCompras(carritoCompras);
+       req.getSession().setAttribute("cantidadproductosCompra", "");
+       req.getSession().setAttribute("preciototalCompra", "");
         RestTemplate rest5=new RestTemplate();
        String link5= "http://localhost:8080/revisarCompradores/compradores/actualizar/"+userid;
        rest5.put(link5, comprador, Comprador.class);

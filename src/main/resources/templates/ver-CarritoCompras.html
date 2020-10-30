@@ -123,7 +123,7 @@
                                 <span>Estado: </span>
                                 <span class="text-success" th:switch="${l.cantStock}">
                                   <strong th:case="0">Sin stock</strong>
-                                  <strong th:case="*">Con stock</strong>
+                                  <strong th:case="*" th:text="'Stock:' + ${l.cantStock}">Con stock</strong>
                                 </span>
                             </div>
                         </div></td>
