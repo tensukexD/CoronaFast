@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import edu.ulima.prueba.model.Comprador;
 import edu.ulima.prueba.model.OrdenCompra;
 import edu.ulima.prueba.model.Producto;
@@ -63,7 +63,7 @@ public class ProductosVendidos {
             i.setTelefonoComprador(comprador.getBody().getTelefono());
             i.setDistritoComprador(comprador.getBody().getDistrito());
 
-            String link4="http://localhost:8080//revisarProductos/productoMostrar/"+i.getIdProducto();
+            String link4="http://localhost:8080/revisarProductos/productoMostrar/"+i.getIdProducto();
 
             ResponseEntity<Producto> producto = rest2.getForEntity(link4, Producto.class);
 
@@ -75,5 +75,13 @@ public class ProductosVendidos {
 
         return "Vendedor-ProductosVendidos";
     }
-    
+    @PostMapping(value="/actualizarestado")
+    public String actualizarestado( HttpServletRequest req,Model model,String estado,String idtransac){
+        OrdenCompra nuevo =new OrdenCompra();
+        nuevo.setEstado(estado);
+        RestTemplate rest3=new RestTemplate();
+        String link5="http://localhost:8080/RevisarOrdenes/ordenes/actualizarestado/"+idtransac;
+        rest3.put(link5, nuevo, OrdenCompra.class);
+        return "redirect:/ProductosVendidos/";
+    }
 }

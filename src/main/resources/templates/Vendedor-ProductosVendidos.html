@@ -139,11 +139,12 @@
                 <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
                 <td th:text="${l.cantidad}">2</td>
                 <td th:text="${l.total}">S/.5</td>
-                <td><select>
-                  <option>Pendiente</option>
-                  <option>En camino</option>
-                  <option>Aceptado</option>
-                </select></td>
+                <form method="POST" action="/ProductosVendidos/actualizarestado/">
+                <td><select name="estado">
+                  <option th:selected="${l.estado == 'Pendiente'}">>Pendiente</option>
+                  <option th:selected="${l.estado == 'En camino'}">En camino</option>
+                  <option th:selected="${l.estado == 'Aceptado'}">Aceptado</option>
+                </select><br><input type="hidden" name="idtransac" th:value="${l.idTransaccion}"/><button type="submit">Actualizar Estado</button></td></form>
                 <td th:text="${l.fechaCompra}">01/01/2020</td>
                 <td th:text="${l.nombreComprador}">el pepe</td>
                 <td th:text="${l.nota}">The brown fox is mad jumping all over the place for no reason </td>
