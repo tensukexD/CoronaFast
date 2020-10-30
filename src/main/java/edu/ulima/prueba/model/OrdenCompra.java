@@ -28,5 +28,8 @@ public class OrdenCompra {
     private float total;
     private String nombreTienda;
     private String telefono;
+    private String nombreComprador;
+    private String telefonoComprador;
+    private String distritoComprador;
     
 }

@@ -134,62 +134,23 @@
 
       <!--Cuerpo-->
 
-            <tr th:each="l : ${productosVendidos}">
-                <td scope="row" style="padding-right: 0px"> <img src="https://mercafree.com/wp-content/uploads/2020/04/gaseosa_coca_cola_original-46082.png" style="max-width: 100px;"> </td>
-                <td>Coca Cola de 500ml</td>
-                <td>2</td>
-                <td>S/.5</td>
+            <tr th:each="l : ${ordenesCompra}">
+                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
+                <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
+                <td th:text="${l.cantidad}">2</td>
+                <td th:text="${l.total}">S/.5</td>
                 <td><select>
                   <option>Pendiente</option>
                   <option>En camino</option>
                   <option>Aceptado</option>
                 </select></td>
-                <td>01/01/2020</td>
-                <td>el pepe</td>
-                <td>The brown fox is mad jumping all over the place for no reason </td>
-                <td>9696969696</td>
-                <td>direcciond ireccion direccion 99</td>
-                <td>Surco</td> 
+                <td th:text="${l.fechaCompra}">01/01/2020</td>
+                <td th:text="${l.nombreComprador}">el pepe</td>
+                <td th:text="${l.nota}">The brown fox is mad jumping all over the place for no reason </td>
+                <td th:text="${l.telefonoComprador}">9696969696</td>
+                <td th:text="${l.direccionexacta}">direcciond ireccion direccion 99</td>
+                <td th:text="${l.distritoComprador}">Surco</td> 
             </tr>
-            
-            <tr >
-              <td scope="row" style="padding-right: 0px"> <img src="https://www.kroger.com/product/images/xlarge/front/0001200014092" style="max-width: 100px;"> </td>
-              <td>Pepsi de 500ml</td>
-              <td>3</td>
-              <td>S/.9</td>
-              <td><select>
-                <option>Pendiente</option>
-                <option>En camino</option>
-                <option>Aceptado</option>
-              </select></td>
-              <td>02/02/2020</td>
-              <td>ete sech</td>
-              <td>The brown fox is mad jumping all over the place for no reason </td>
-              <td>9494949494</td>
-              <td>direccion 9294 direccion </td>
-              <td>La molina</td>
-              
-          </tr>
-
-          <tr >
-            <td scope="row" style="padding-right: 0px"> <img src="https://i.linio.com/p/640ed3b77502de4ed0db77398d829841-zoom.jpg" style="max-width: 100px;"> </td>
-            <td>Cargador USB magnético</td>
-            <td>2</td>
-            <td>S/.24</td>
-            <td><select>
-              <option>Pendiente</option>
-              <option>En camino</option>
-              <option>Aceptado</option>
-            </select></td>
-            <td>03/03/2020</td>
-            <td>pedro</td>
-            <td>The brown fox is mad jumping all over the place for no reason</td>
-            <td>949494944</td>
-            <td>direccion direccion direccion 24</td>
-            <td>Surco</td>
-        </tr>
-           
-
     </table>
     
 
