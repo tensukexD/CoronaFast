@@ -170,10 +170,9 @@
                       <img class="pic-2"  style="width: 180px; height: 230px;" th:src="${l.imagen}">
                   </a>
                   <ul class="social">
-                    <li><form method="POST"
-                        ><input type="hidden" name="idtienda" th:value="${l.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-                    <li><form method="POST"  action="/PaginaPrincipalComprador/agregarCarrito/"
-                        ><input type="hidden" name="idproducto" th:value="${l.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+                    <li><a th:href="@{/CompradorPaginaVendedor/{y} (y=${l.idUsuario})}">
+                         <i class="fa fa-shopping-bag"></i></a></li>
+                    <li> <a th:href="@{/PaginaPrincipalComprador/agregarCarrito/{y} (y=${l.idProducto})}"> <i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
                   <span class="product-new-label">New</span>
               </div>

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import edu.ulima.prueba.model.Comprador;
 import edu.ulima.prueba.model.Producto;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -184,8 +184,8 @@ public class PaginaPrincipalComprador {
         return "tienda-PaginaPrincipalComprador";
         
     }
-    @PostMapping(value = "/agregarCarrito")
-    public String agregarcarrito(Model model, HttpServletRequest req, String idproducto){
+    @GetMapping(value = "/agregarCarrito/{idproducto}")
+    public String agregarcarrito(Model model, HttpServletRequest req, @PathVariable("idproducto") String idproducto){
 
         String idUsuario = (String) req.getSession().getAttribute("idingresado");
 
