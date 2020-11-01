@@ -129,7 +129,7 @@
                         </div></td>
                         <div>
                           <td class="col-sm-1 col-md-1" style="text-align: center">
-                            <input type="text" name="quantity[]" th:id="'cantidadProducto' + ${l.idProducto}" value="1" class="result" form="postearcantidades"/>
+                            <input type="text" name="quantity[]" th:id="'cantidadProducto' + ${l.idProducto}" value="1" class="result" minlength="1" oninput="agregarPrecios()" form="postearcantidades"/>
                           </td>
                           <td class="col-sm-1 col-md-1 text-center"><span th:id="'precioProducto' + ${l.idProducto}" th:text="'$' + ${l.precio}"></span></td>
                           
@@ -168,15 +168,11 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td>
+                        <td>    </td>
 
                         <td>
                         <button type="submit" class="btn btn-success" form="postearcantidades">
                             Pagar <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
-
-                        <button type="button" id="botonActualizar" class="btn btn-success" onclick="agregarPrecios()">
-                          Actualizar <span class="glyphicon glyphicon-play"></span>
                         </button></td>
                         
                     </tr>
