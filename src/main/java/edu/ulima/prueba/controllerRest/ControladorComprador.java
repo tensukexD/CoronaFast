@@ -108,7 +108,12 @@ public ResponseEntity<Void> agregarTiendaFav(@PathVariable("idComprador") Long i
     Optional<Comprador> l = lRepository.findById(idComprador);
     comprador=l.get();
     ArrayList<Long> tiendas = comprador.getTiendasFavoritas();
-    tiendas.add(idTienda);
+
+    if(tiendas.contains(idTienda)){
+        System.out.println("Ya existe esta tienda");
+    }else{
+        tiendas.add(idTienda);
+    }
 
     comprador.setTiendasFavoritas(tiendas);
 
@@ -124,7 +129,12 @@ public ResponseEntity<Void> agregarProductoFav(@PathVariable("idComprador") Long
     Optional<Comprador> l = lRepository.findById(idComprador);
     comprador=l.get();
     ArrayList<Long> productos = comprador.getListaDeseados();
-    productos.add(idProducto);
+
+    if(productos.contains(idProducto)){
+        System.out.println("Ya existe este producto");
+    }else{
+        productos.add(idProducto);
+    }
 
     comprador.setListaDeseados(productos);
 
@@ -141,7 +151,12 @@ public ResponseEntity<Void> agregarCarrito(@PathVariable("idComprador") Long idC
     comprador=l.get();
 
     ArrayList<Long> carrito = comprador.getCarritoCompras();
-    carrito.add(idProducto);
+
+    if(carrito.contains(idProducto)){
+        System.out.println("Ya existe este producto");
+    }else{
+        carrito.add(idProducto);
+    }
 
     comprador.setCarritoCompras(carrito);
 

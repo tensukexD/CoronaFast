@@ -2,10 +2,13 @@
 
 var estadoEmail = false;
 var arregloCompradores = [];
+var arregloVendedores = [];
 
 var url = "http://localhost:8080/revisarCompradores/compradores/mostrar";
+var url2 = "http://localhost:8080/revisarVendedores/vendedores/mostrar/";
 
 var xhr = new XMLHttpRequest();
+var xhr2 = new XMLHttpRequest();
 
 var alertaEmail = document.getElementById("alertaEmail");
 var botonCrear = document.getElementById("btnComprador");
@@ -28,6 +31,16 @@ function obtenerCompradores(){
     xhr.send();
 }
 
+function obtenerVendedores(){
+    xhr2.onload = function(){
+        var arregloJSON = JSON.parse(xhr2.response);
+        arregloVendedores = arregloJSON;
+        console.log(arregloVendedores[0].email);
+    }
+    xhr2.open('GET', url2,true);
+    xhr2.send();
+}
+
 var email = document.getElementById("email");
 
 email.addEventListener("input",function(){
@@ -46,9 +59,16 @@ email.addEventListener("input",function(){
         }else{
             estadoEmail = true;
             alertaEmail.style.display = "none";
-            if(arregloCompradores != []){
+            if(arregloCompradores != [] || arregloVendedores != []){
                 for(var i=0;i<arregloCompradores.length;i++){
                     if(email.value==arregloCompradores[i].email){
+                        alertaEmail.innerHTML = "<strong>La entidad ya se ha creado</strong>";
+                        alertaEmail.style.display = "block";
+                        estadoEmail = false;
+                    }
+                }
+                for(var j=0;j<arregloVendedores.length;j++){
+                    if(email.value==arregloVendedores[j].email){
                         alertaEmail.innerHTML = "<strong>La entidad ya se ha creado</strong>";
                         alertaEmail.style.display = "block";
                         estadoEmail = false;
@@ -62,4 +82,5 @@ email.addEventListener("input",function(){
 
 window.onload = function(){
     obtenerCompradores();
+    obtenerVendedores();
 }

@@ -113,7 +113,7 @@
         <div class="form-group">
           <form method="POST" action="/AgregarProducto/crear">
             <div class="input-group mb-2">
-              <input type="text" name="nombreProducto" class="form-control"   placeholder="Nombre del producto " required>
+              <input type="text" name="nombreProducto" maxlength="20" class="form-control"   placeholder="Nombre del producto " required>
             </div>
             
             <div class="input-group mb-2">
@@ -135,11 +135,11 @@
             </div>
 
             <div class="input-group mb-2">
-              <input type="text" name="precio" class="form-control"   placeholder="Precio (En soles)" required>
+              <input type="text" name="precio" maxlength="6" class="form-control"   placeholder="Precio (En soles)" required>
             </div>
 
             <div class="input-group mb-2">
-              <input type="text" name="stock" class="form-control"   placeholder="Cantidad en stock" required>
+              <input type="text" name="stock" maxlength="6" class="form-control"   placeholder="Cantidad en stock" required>
             </div>
 
             <button type="submit" name="button" id="botonVendedor" class="btn btn-success" style="margin-bottom: 20px;">Agregar Producto</button>

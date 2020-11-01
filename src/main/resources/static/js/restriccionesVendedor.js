@@ -3,13 +3,16 @@
 var estadoEmail = false;
 var estadoRUC = false;
 var arregloVendedores = [];
+var arregloCompradores = [];
 var arregloTiendas = [];
 
 var url = "http://localhost:8080/revisarVendedores/vendedores/mostrar/";
 var url2 = "http://localhost:8080/revisarTienda/tiendas/mostrar/";
+var url3 = "http://localhost:8080/revisarCompradores/compradores/mostrar";
 
 var xhr = new XMLHttpRequest();
 var xhr2 = new XMLHttpRequest();
+var xhr3 = new XMLHttpRequest();
 
 var alertaEmail = document.getElementById("alertaEmail");
 var alertaRUC = document.getElementById("alertaRUC");
@@ -23,14 +26,23 @@ function btnActivo(){
     }
 }
 
-function obtenerCompradores(){
+function obtenerVendedores(){
     xhr.onload = function(){
-        var arregloJSON = JSON.parse(xhr.response);
-        arregloVendedores = arregloJSON;
+        arregloVendedores = JSON.parse(xhr.response);
+        console.log(JSON.parse(xhr.response))
         console.log(arregloVendedores[0].email);
     }
     xhr.open('GET', url,true);
     xhr.send();
+}
+
+function obtenerCompradores(){
+    xhr3.onload = function(){
+        arregloCompradores = JSON.parse(xhr3.response);
+        console.log(arregloCompradores[0].email);
+    }
+    xhr3.open('GET', url3,true);
+    xhr3.send();
 }
 
 function obtenerTiendas(){
@@ -55,9 +67,16 @@ email.addEventListener("input",function(){
     }else{
         estadoEmail = true;
         alertaEmail.style.display = "none";
-        if(arregloVendedores != []){
+        if(arregloVendedores != [] || arregloCompradores != []){
             for(var i=0;i<arregloVendedores.length;i++){
                 if(email.value==arregloVendedores[i].email){
+                    alertaEmail.innerHTML = "<strong>La entidad ya se ha creado</strong>";
+                    alertaEmail.style.display = "block";
+                    estadoEmail = false;
+                }
+            }
+            for(var j=0;j<arregloCompradores.length;j++){
+                if(email.value==arregloCompradores[j].email){
                     alertaEmail.innerHTML = "<strong>La entidad ya se ha creado</strong>";
                     alertaEmail.style.display = "block";
                     estadoEmail = false;
@@ -93,6 +112,7 @@ ruc.addEventListener("input",function(){
 
 
 window.onload = function(){
+    obtenerVendedores();
     obtenerCompradores();
     obtenerTiendas();
 }
