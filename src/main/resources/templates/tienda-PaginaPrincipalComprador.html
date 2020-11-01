@@ -199,10 +199,9 @@
                     
                 </a>
                 <ul class="social">
-                    <li><form method="POST" 
-                        ><input type="hidden" name="idtienda" th:value="${l.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-                    <li><form method="POST"  action="/PaginaPrincipalComprador/agregarCarrito/"
-                        ><input type="hidden" name="idproducto" th:value="${l.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+                    <li><a th:href="@{/CompradorPaginaVendedor/{y} (y=${l.idUsuario})}">
+                         <i class="fa fa-shopping-bag"></i></a></li>
+                    <li> <a th:href="@{/PaginaPrincipalComprador/agregarCarrito/{y} (y=${l.idProducto})}"> <i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
                 
             </div>
@@ -236,10 +235,8 @@
                         
                     </a>
                     <ul class="social">
-                        <li><form method="POST" 
-                            ><input type="hidden" name="idtienda" th:value="${j.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-                        <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
-                            ><input type="hidden" name="idproducto" th:value="${j.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+                        <li><a th:href="@{/CompradorPaginaVendedor/{y} (y=${j.idUsuario})}"> <i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a th:href="@{/PaginaPrincipalComprador/agregarCarrito/{y} (y=${j.idProducto})}">  <i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
                     
                 </div>
@@ -272,14 +269,12 @@
       <div class="product-grid3">
           <div class="product-image3">
               <a href="#">
-                  <img class="pic-1" th:src="${m.imagen}">
+                <img class="pic-1" style="width: 180px; height: 230px;" th:src="${m.imagen}">
                  
               </a>
               <ul class="social">
-                <li><form method="POST" 
-                  ><input type="hidden" name="idtienda" th:value="${m.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-              <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
-                  ><input type="hidden" name="idproducto" th:value="${m.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+                <li><a th:href="@{/CompradorPaginaVendedor/{y} (y=${m.idUsuario})}"><i class="fa fa-shopping-bag"></i></a></li>
+              <li><a th:href="@{/PaginaPrincipalComprador/agregarCarrito/{y} (y=${m.idProducto})}"> <i class="fa fa-shopping-cart"></i></a></li>
               </ul>
              
           </div>
@@ -307,14 +302,12 @@
     <div class="product-grid3">
         <div class="product-image3">
             <a href="#">
-                <img class="pic-1" th:src="${n.imagen}">
+              <img class="pic-1" style="width: 180px; height: 230px;" th:src="${n.imagen}">
                
             </a>
             <ul class="social">
-              <li><form method="POST" 
-                ><input type="hidden" name="idtienda" th:value="${n.idUsuario}"/> <button type="submit"><i class="fa fa-shopping-bag"></i></button></form></li>
-            <li><form method="POST" action="/PaginaPrincipalComprador/agregarCarrito/"
-                ><input type="hidden" name="idproducto" th:value="${n.idProducto}"/> <button type="submit"><i class="fa fa-shopping-cart"></i></button></form></li>
+              <li><a th:href="@{/CompradorPaginaVendedor/{y} (y=${n.idUsuario})}"><i class="fa fa-shopping-bag"></i></a></li>
+            <li><a th:href="@{/PaginaPrincipalComprador/agregarCarrito/{y} (y=${n.idProducto})}"> <i class="fa fa-shopping-cart"></i></a></li>
             </ul>
            
         </div>

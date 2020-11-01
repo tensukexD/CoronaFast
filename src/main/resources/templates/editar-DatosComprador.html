@@ -41,11 +41,13 @@
     
     <!-- Barra de busqueda-->
     <div class="d-flex justify-content-center h-100" style="padding-left: 50px;">
-      <div class="searchbar">
-        <input class="search_input" type="text" name="" placeholder="Busca otro artículo">
-        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-      </div>
-    </div>
+      <form action="/ResultadosBusqueda/" method="POST">
+          <div class="searchbar">
+              <input class="search_input" type="text" name="strBusqueda" placeholder="Busca otro artículo">
+              <button type="submit" class="search_icon"><i class="fas fa-search"></i></a>
+          </div>
+      </form>
+  </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
