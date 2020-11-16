@@ -46,10 +46,10 @@ public class ControllerRegistroVendedor {
         vendedor.setContrasena(contrasena);
         vendedor.setTelefono(telefono);
 
-        String link = "http://localhost:8080/revisarVendedores/vendedores/agregar/";
+        String link = "http://coronafast.herokuapp.com/revisarVendedores/vendedores/agregar/";
         rest.postForObject(link, vendedor, Vendedor.class);
 
-        String link3 = "http://localhost:8080/revisarVendedores/vendedores/seleccionarEmail/"+email+"/";
+        String link3 = "http://coronafast.herokuapp.com/revisarVendedores/vendedores/seleccionarEmail/"+email+"/";
 
         Vendedor vendedorNuevo = rest.getForObject(link3, Vendedor.class);
 
@@ -64,7 +64,7 @@ public class ControllerRegistroVendedor {
             tienda.setTelefono(telefono);
             tienda.setDistrito(distrito);  
 
-            String link2 = "http://localhost:8080/revisarTienda/tiendas/agregar/";
+            String link2 = "http://coronafast.herokuapp.com/revisarTienda/tiendas/agregar/";
             rest2.postForObject(link2, tienda, Tienda.class);
         }
         

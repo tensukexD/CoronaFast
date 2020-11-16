@@ -48,7 +48,7 @@ public class ControllerRegistroComprador {
    
 
 
-        String link = "http://localhost:8080/revisarCompradores/compradores/agregar/";
+        String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/agregar/";
         rest.postForObject(link, comprador, Comprador.class);
 
       

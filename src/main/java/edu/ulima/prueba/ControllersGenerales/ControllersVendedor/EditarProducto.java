@@ -20,7 +20,7 @@ public class EditarProducto {
     public String Retornarpag(@PathVariable("id") String id, HttpServletRequest req,Model model){
 
         RestTemplate rest=new RestTemplate();
-        String link="http://localhost:8080/revisarProductos/productoMostrar/"+id;
+        String link="http://coronafast.herokuapp.com/revisarProductos/productoMostrar/"+id;
         ResponseEntity<Producto> producto = rest.getForEntity(link,Producto.class); 
         model.addAttribute("producto", producto.getBody()); 
         return "Vendedor-EditarProducto";
@@ -30,7 +30,7 @@ public class EditarProducto {
     public String editarProducto(@PathVariable("id") String id, String nombreProducto, String categoria, String imagen, String precio, String cantStock, HttpServletRequest req){
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest2=new RestTemplate();
-        String link="http://localhost:8080/revisarTienda/tienda/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarTienda/tienda/seleccionar/"+userid;
         ResponseEntity<Tienda>datostienda=rest2.getForEntity(link,Tienda.class); 
 
         Producto producto = new Producto();
@@ -44,7 +44,7 @@ public class EditarProducto {
         producto.setNombreTienda(datostienda.getBody().getNombreTienda());
 
         RestTemplate rest = new RestTemplate();
-        String link2 = "http://localhost:8080/revisarProductos/productos/actualizar/"+id;
+        String link2 = "http://coronafast.herokuapp.com/revisarProductos/productos/actualizar/"+id;
         rest.put(link2, producto, Producto.class);
         return "redirect:/PaginaPrincipalVendedor/";
     }

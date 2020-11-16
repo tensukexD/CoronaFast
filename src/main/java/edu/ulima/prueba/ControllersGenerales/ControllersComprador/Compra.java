@@ -37,7 +37,7 @@ public class Compra {
         }
         Comprador comprador = new Comprador();
         RestTemplate rest=new RestTemplate();
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>compradorResponse=rest.getForEntity(link,Comprador.class); 
         comprador = compradorResponse.getBody();
        if(comprador.getCarritoCompras().get(0)==null || prueba1.equals("")){
@@ -61,7 +61,7 @@ public class Compra {
         Comprador comprador = new Comprador();
         RestTemplate rest=new RestTemplate();
         String[] prueba1=(String[])req.getSession().getAttribute("cantidadproductosCompra");
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>compradorResponse=rest.getForEntity(link,Comprador.class); 
         comprador = compradorResponse.getBody();
         ArrayList<Long> carrito=comprador.getCarritoCompras();
@@ -77,7 +77,7 @@ public class Compra {
         int auxiliar=0;
         for(Long i : comprador.getCarritoCompras()){
             RestTemplate rest10=new RestTemplate();
-            String linkcompro1="http://localhost:8080/revisarProductos/productoMostrar/"+i;
+            String linkcompro1="http://coronafast.herokuapp.com/revisarProductos/productoMostrar/"+i;
             System.out.println(linkcompro1);
             System.out.println(linkcompro1);
             ResponseEntity<Producto>productofakec=rest10.getForEntity(linkcompro1,Producto.class);
@@ -107,7 +107,7 @@ public class Compra {
             System.out.println("LLEGO ACA2");
             System.out.println("LLEGO ACA2");
             System.out.println("LLEGO ACA2");
-            String link2="http://localhost:8080/revisarProductos/productoMostrar/"+Long.toString(carrito.get(i));
+            String link2="http://coronafast.herokuapp.com/revisarProductos/productoMostrar/"+Long.toString(carrito.get(i));
 
             ResponseEntity<Producto>productofake=rest20.getForEntity(link2,Producto.class);
             Producto producto=productofake.getBody();
@@ -120,7 +120,7 @@ public class Compra {
             ///ACTUALIZAR STOCK////
                 Producto nuevoproducto=new Producto();
                 RestTemplate rest3=new RestTemplate();
-                String link3="http://localhost:8080/revisarProductos/productos/actualizar/"+Long.toString(carrito.get(i));
+                String link3="http://coronafast.herokuapp.com/revisarProductos/productos/actualizar/"+Long.toString(carrito.get(i));
                 nuevoproducto.setIdUsuario(producto.getIdUsuario());
                 nuevoproducto.setImagen(producto.getImagen());
                 nuevoproducto.setNombreProducto(producto.getNombreProducto());
@@ -154,7 +154,7 @@ public class Compra {
        req.getSession().setAttribute("cantidadproductosCompra", "");
        req.getSession().setAttribute("preciototalCompra", "");
         RestTemplate rest5=new RestTemplate();
-       String link5= "http://localhost:8080/revisarCompradores/compradores/actualizar/"+userid;
+       String link5= "http://coronafast.herokuapp.com/revisarCompradores/compradores/actualizar/"+userid;
        rest5.put(link5, comprador, Comprador.class);
         return "redirect:/CarritoCompras/";
     }

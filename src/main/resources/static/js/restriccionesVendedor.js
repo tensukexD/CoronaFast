@@ -6,9 +6,9 @@ var arregloVendedores = [];
 var arregloCompradores = [];
 var arregloTiendas = [];
 
-var url = "http://localhost:8080/revisarVendedores/vendedores/mostrar/";
-var url2 = "http://localhost:8080/revisarTienda/tiendas/mostrar/";
-var url3 = "http://localhost:8080/revisarCompradores/compradores/mostrar";
+var url = "http://coronafast.herokuapp.com/revisarVendedores/vendedores/mostrar/";
+var url2 = "http://coronafast.herokuapp.com/revisarTienda/tiendas/mostrar/";
+var url3 = "http://coronafast.herokuapp.com/revisarCompradores/compradores/mostrar";
 
 var xhr = new XMLHttpRequest();
 var xhr2 = new XMLHttpRequest();

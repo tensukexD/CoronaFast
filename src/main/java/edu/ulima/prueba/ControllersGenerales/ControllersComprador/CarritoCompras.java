@@ -39,14 +39,14 @@ public class CarritoCompras {
         Comprador comprador = new Comprador();
         List<Producto> productos = new ArrayList<Producto>();
 
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>compradorResponse=rest.getForEntity(link,Comprador.class); 
         
         comprador = compradorResponse.getBody();
 
         for(Long i : comprador.getCarritoCompras()){
 
-            String link2="http://localhost:8080/revisarProductos/productoMostrar/"+i;
+            String link2="http://coronafast.herokuapp.com/revisarProductos/productoMostrar/"+i;
 
             ResponseEntity<Producto>producto=rest.getForEntity(link2,Producto.class);
              
@@ -66,7 +66,7 @@ public class CarritoCompras {
 
         RestTemplate rest = new RestTemplate();
 
-        String link = "http://localhost:8080/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+idProducto;
+        String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+idProducto;
 
         rest.put(link,null);
 

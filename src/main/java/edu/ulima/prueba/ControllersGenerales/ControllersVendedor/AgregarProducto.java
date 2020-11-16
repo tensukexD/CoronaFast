@@ -40,7 +40,7 @@ public class AgregarProducto {
         RestTemplate rest = new RestTemplate();
         
 
-        String link2 ="http://localhost:8080/revisarTienda/tienda/seleccionar/"+userid;
+        String link2 ="http://coronafast.herokuapp.com/revisarTienda/tienda/seleccionar/"+userid;
         Tienda tienda =rest.getForObject(link2, Tienda.class);
         
         producto.setIdUsuario(Long.parseLong(userid));
@@ -52,7 +52,7 @@ public class AgregarProducto {
         producto.setDistrito(tienda.getDistrito());
         producto.setNombreTienda(tienda.getNombreTienda());
 
-        String link = "http://localhost:8080/revisarProductos/productos/agregar";
+        String link = "http://coronafast.herokuapp.com/revisarProductos/productos/agregar";
 
         rest.postForObject(link, producto, Producto.class);
 

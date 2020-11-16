@@ -4,8 +4,8 @@ var estadoEmail = false;
 var arregloCompradores = [];
 var arregloVendedores = [];
 
-var url = "http://localhost:8080/revisarCompradores/compradores/mostrar";
-var url2 = "http://localhost:8080/revisarVendedores/vendedores/mostrar/";
+var url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/mostrar";
+var url2 = "http://coronafast.herokuapp.com/revisarVendedores/vendedores/mostrar/";
 
 var xhr = new XMLHttpRequest();
 var xhr2 = new XMLHttpRequest();

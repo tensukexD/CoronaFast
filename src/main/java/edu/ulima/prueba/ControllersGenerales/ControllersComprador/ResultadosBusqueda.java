@@ -37,7 +37,7 @@ public class ResultadosBusqueda {
         }
 
         RestTemplate rest = new RestTemplate();
-        String link = "http://localhost:8080/revisarProductos/productos/mostrar";
+        String link = "http://coronafast.herokuapp.com/revisarProductos/productos/mostrar";
         ResponseEntity<Producto[]> listaProductos = rest.getForEntity(link, Producto[].class);
         Producto[] arrPro = listaProductos.getBody();
         List<Producto> listPro = Arrays.asList(arrPro);
@@ -74,7 +74,7 @@ public class ResultadosBusqueda {
         str = strBusqueda;
         
         RestTemplate rest = new RestTemplate();
-        String link = "http://localhost:8080/revisarProductos/productos/mostrar";
+        String link = "http://coronafast.herokuapp.com/revisarProductos/productos/mostrar";
         ResponseEntity<Producto[]> listaProductos = rest.getForEntity(link, Producto[].class);
         Producto[] arrPro = listaProductos.getBody();
         List<Producto> listPro = Arrays.asList(arrPro);
@@ -103,7 +103,7 @@ public class ResultadosBusqueda {
 
         Producto p = new Producto();
 
-        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarProducto/"+idProducto;
+        String url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+idUsuario+"/agregarProducto/"+idProducto;
 
         rest.put(url, p, Producto.class); 
 
@@ -120,7 +120,7 @@ public class ResultadosBusqueda {
 
         Producto p = new Producto();
 
-        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarCarrito/"+idProducto;
+        String url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+idUsuario+"/agregarCarrito/"+idProducto;
 
         rest.put(url, p, Producto.class); 
 
@@ -136,7 +136,7 @@ public class ResultadosBusqueda {
 
         Tienda t  = new Tienda();
 
-        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarTienda/"+idTienda;
+        String url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+idUsuario+"/agregarTienda/"+idTienda;
 
         rest.put(url, t, Tienda.class);
 

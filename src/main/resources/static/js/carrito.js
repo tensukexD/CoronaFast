@@ -19,7 +19,7 @@ var precioEnvio = 20;
 var precioFinal = 0;
 
 
-var url = "http://localhost:8080/revisarCompradores/compradores/seleccionar/"+id.toString();
+var url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+id.toString();
 var xhr = new XMLHttpRequest();
 
 function obtenerComprador(){
@@ -43,7 +43,7 @@ var xhr2 = new XMLHttpRequest();
 
 function obtenerProductos(){
     var productos = [];
-        var url2 = "http://localhost:8080/revisarProductos/productos/mostrar/";
+        var url2 = "http://coronafast.herokuapp.com/revisarProductos/productos/mostrar/";
         xhr2.onload = function(){
             productos = JSON.parse(xhr2.response);
             arregloProductos = productos;

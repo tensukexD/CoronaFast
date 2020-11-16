@@ -35,7 +35,7 @@ public class PaginaPrincipalVendedor {
             return "redirect:/PaginaPrincipalComprador/";
         }
         
-        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://localhost:8080/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
+        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://coronafast.herokuapp.com/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
         Producto[] arrPro = listaProductos.getBody();
         List<Producto> listPro = Arrays.asList(arrPro);
 

@@ -37,11 +37,11 @@ public class PaginaPrincipalComprador {
         RestTemplate rest=new RestTemplate();
         
         
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>comprador=rest.getForEntity(link,Comprador.class); 
         
         RestTemplate rest2=new RestTemplate();
-        String link2="http://localhost:8080/revisarProductos/producto/seleccionar/"+comprador.getBody().getCategoriaPreferida();
+        String link2="http://coronafast.herokuapp.com/revisarProductos/producto/seleccionar/"+comprador.getBody().getCategoriaPreferida();
         ResponseEntity<Producto[]>productoscategoricos=rest2.getForEntity(link2,Producto[].class); 
         int numero=0;
         Producto[] productoscategoricosr=productoscategoricos.getBody();
@@ -110,7 +110,7 @@ public class PaginaPrincipalComprador {
             }  
        }
        RestTemplate rest3=new RestTemplate();
-        String link3="http://localhost:8080/revisarProductos/producto/ubicacion/"+comprador.getBody().getDistrito();
+        String link3="http://coronafast.herokuapp.com/revisarProductos/producto/ubicacion/"+comprador.getBody().getDistrito();
        // String link3="http://localhost:8080/revisarProductos/producto/seleccionar/"+comprador.getBody().getCategoriaPreferida();
        ResponseEntity<Producto[]>productosubicacion=rest3.getForEntity(link3,Producto[].class); 
         Producto[] productosubicacionr=productosubicacion.getBody();
@@ -193,7 +193,7 @@ public class PaginaPrincipalComprador {
 
         Producto p = new Producto();
 
-        String url = "http://localhost:8080/revisarCompradores/compradores/"+idUsuario+"/agregarCarrito/"+idproducto;
+        String url = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+idUsuario+"/agregarCarrito/"+idproducto;
 
         rest.put(url, p, Producto.class); 
 

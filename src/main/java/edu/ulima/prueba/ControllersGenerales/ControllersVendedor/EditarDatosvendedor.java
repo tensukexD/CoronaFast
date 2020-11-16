@@ -25,9 +25,9 @@ public class EditarDatosvendedor {
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest=new RestTemplate();
         RestTemplate rest2=new RestTemplate();
-        String link="http://localhost:8080/revisarTienda/tienda/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarTienda/tienda/seleccionar/"+userid;
         ResponseEntity<Tienda>datostienda=rest.getForEntity(link,Tienda.class); 
-        String link2="http://localhost:8080/revisarVendedores/vendedores/seleccionar/"+userid;
+        String link2="http://coronafast.herokuapp.com/revisarVendedores/vendedores/seleccionar/"+userid;
         ResponseEntity<Vendedor>datosvendedor=rest2.getForEntity(link2,Vendedor.class); 
         model.addAttribute("tiendap", datostienda.getBody());
         model.addAttribute("vendedorp", datosvendedor.getBody());
@@ -50,15 +50,15 @@ public class EditarDatosvendedor {
         RestTemplate rest = new RestTemplate();
         RestTemplate rest2 = new RestTemplate();
         RestTemplate rest3 = new RestTemplate();
-        String link = "http://localhost:8080/revisarTienda/tienda/actualizar/"+userid;
-        String link2 = "http://localhost:8080/revisarVendedores/vendedores/actualizar/"+userid;
+        String link = "http://coronafast.herokuapp.com/revisarTienda/tienda/actualizar/"+userid;
+        String link2 = "http://coronafast.herokuapp.com/revisarVendedores/vendedores/actualizar/"+userid;
         rest.put(link2, vendedoreditado, Vendedor.class);
         rest2.put(link, tiendaeditada, Tienda.class);
-        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://localhost:8080/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
+        ResponseEntity<Producto[]> listaProductos = rest.getForEntity("http://coronafast.herokuapp.com/revisarProductos/productosTienda/"+userid+"/mostrar",Producto[].class);
         Producto[] arrProduc = listaProductos.getBody();
         for (int i = 0; i < arrProduc.length; i++) {
             Producto productodistrito = new Producto();
-            String link3 = "http://localhost:8080/revisarProductos/productos/actualizar/"+arrProduc[i].getIdProducto();
+            String link3 = "http://coronafast.herokuapp.com/revisarProductos/productos/actualizar/"+arrProduc[i].getIdProducto();
             productodistrito.setImagen(arrProduc[i].getImagen());
             productodistrito.setNombreProducto(arrProduc[i].getNombreProducto());
             productodistrito.setCategoria(arrProduc[i].getCategoria());

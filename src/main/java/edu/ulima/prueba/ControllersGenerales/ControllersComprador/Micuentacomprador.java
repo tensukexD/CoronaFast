@@ -20,7 +20,7 @@ public class Micuentacomprador {
 
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest=new RestTemplate();
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>comprador=rest.getForEntity(link,Comprador.class); 
         model.addAttribute("comprador", comprador.getBody());
         return "ver-DatosComprador";

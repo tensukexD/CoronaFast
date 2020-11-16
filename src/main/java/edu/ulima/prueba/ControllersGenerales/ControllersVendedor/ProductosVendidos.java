@@ -40,7 +40,7 @@ public class ProductosVendidos {
 
         List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
 
-        String link="http://localhost:8080/RevisarOrdenes/ordenesVendedor/mostrar/"+userid;
+        String link="http://coronafast.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid;
         ResponseEntity<OrdenCompra[]>listaOrdenesCompra=rest.getForEntity(link,OrdenCompra[].class); 
         
         ordenesCompra = Arrays.asList(listaOrdenesCompra.getBody());
@@ -55,7 +55,7 @@ public class ProductosVendidos {
 
             RestTemplate rest2=new RestTemplate();
 
-            String link3="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+i.getIdUsuarioComprador();
+            String link3="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+i.getIdUsuarioComprador();
 
             ResponseEntity<Comprador> comprador = rest2.getForEntity(link3, Comprador.class);
 
@@ -63,7 +63,7 @@ public class ProductosVendidos {
             i.setTelefonoComprador(comprador.getBody().getTelefono());
             i.setDistritoComprador(comprador.getBody().getDistrito());
 
-            String link4="http://localhost:8080/revisarProductos/productoMostrar/"+i.getIdProducto();
+            String link4="http://coronafast.herokuapp.com/revisarProductos/productoMostrar/"+i.getIdProducto();
 
             ResponseEntity<Producto> producto = rest2.getForEntity(link4, Producto.class);
 
@@ -80,7 +80,7 @@ public class ProductosVendidos {
         OrdenCompra nuevo =new OrdenCompra();
         nuevo.setEstado(estado);
         RestTemplate rest3=new RestTemplate();
-        String link5="http://localhost:8080/RevisarOrdenes/ordenes/actualizarestado/"+idtransac;
+        String link5="http://coronafast.herokuapp.com/RevisarOrdenes/ordenes/actualizarestado/"+idtransac;
         rest3.put(link5, nuevo, OrdenCompra.class);
         return "redirect:/ProductosVendidos/";
     }

@@ -21,7 +21,7 @@ public class EditarDatoscomprador {
 
         String userid = (String) req.getSession().getAttribute("idingresado");
         RestTemplate rest=new RestTemplate();
-        String link="http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link="http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
         ResponseEntity<Comprador>comprador=rest.getForEntity(link,Comprador.class); 
         model.addAttribute("comprador", comprador.getBody());
         return "editar-DatosComprador";
@@ -32,7 +32,7 @@ public class EditarDatoscomprador {
         
         String userid = (String) req.getSession().getAttribute("idingresado");
 
-        String link2 = "http://localhost:8080/revisarCompradores/compradores/seleccionar/"+userid;
+        String link2 = "http://coronafast.herokuapp.com/revisarCompradores/compradores/seleccionar/"+userid;
 
         RestTemplate rest2 = new RestTemplate();
 
@@ -50,7 +50,7 @@ public class EditarDatoscomprador {
         comprador.setTiendasFavoritas(compradorAntiguo.getTiendasFavoritas());
 
         RestTemplate rest = new RestTemplate();
-        String link = "http://localhost:8080/revisarCompradores/compradores/actualizar/"+userid;
+        String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/actualizar/"+userid;
         rest.put(link, comprador, Comprador.class);
         return "redirect:/PaginaPrincipalComprador/";
     }

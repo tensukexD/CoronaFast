@@ -51,11 +51,11 @@ public class ControllerLogin {
 
         RestTemplate rest=new RestTemplate();
 
-        ResponseEntity<Comprador[]>listadeusuariosCompradores=rest.getForEntity("http://localhost:8080/revisarCompradores/compradores/mostrar",Comprador[].class);
+        ResponseEntity<Comprador[]>listadeusuariosCompradores=rest.getForEntity("http://coronafast.herokuapp.com/revisarCompradores/compradores/mostrar",Comprador[].class);
         Comprador[] lus1=listadeusuariosCompradores.getBody();
         List<Comprador> lus2=Arrays.asList(lus1); 
 
-        ResponseEntity<Vendedor[]>listadeusuariosVendedores=rest.getForEntity("http://localhost:8080/revisarVendedores/vendedores/mostrar",Vendedor[].class);
+        ResponseEntity<Vendedor[]>listadeusuariosVendedores=rest.getForEntity("http://coronafast.herokuapp.com/revisarVendedores/vendedores/mostrar",Vendedor[].class);
         Vendedor[] luss1=listadeusuariosVendedores.getBody();
         List<Vendedor> luss2=Arrays.asList(luss1); 
 
