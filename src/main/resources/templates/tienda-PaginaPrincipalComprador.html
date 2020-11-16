@@ -101,12 +101,16 @@
       <div class="col-lg-3">
 
         
-        <div class="list-group" style="padding-top: 50px;">
-          <a href="#" class="list-group-item">Comida</a>
-          <a href="#" class="list-group-item">Electrónicos</a>
-          <a href="#" class="list-group-item">Autos</a>
-          <a href="#" class="list-group-item">Droga</a>
-          <a href="#" class="list-group-item">Accesorios</a>
+        <div class="list-group" style="padding-top: 20px;">
+          <a th:href="@{/CompradorPaginaVendedor/{y}/comida (y=${tienda.idUsuario})}" class="list-group-item">Comida</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/electronicos (y=${tienda.idUsuario})}" class="list-group-item">Electronicos</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/accesorios (y=${tienda.idUsuario})}" class="list-group-item">Accesorios</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/ropa (y=${tienda.idUsuario})}" class="list-group-item">Ropa</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/medicina (y=${tienda.idUsuario})}" class="list-group-item">Medicina</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/juguetes (y=${tienda.idUsuario})}" class="list-group-item">Juguetes</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/limpieza (y=${tienda.idUsuario})}" class="list-group-item">Limpieza</a>
+          <a th:href="@{/CompradorPaginaVendedor/{y}/utilesOficina (y=${tienda.idUsuario})}" class="list-group-item">Utiles de oficina</a>
+          
         </div>
 
       </div>
@@ -120,13 +124,13 @@
           <div id="carouselExample1" class="carousel slide z-depth-1-half" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="../imagenes/coronafast.png" alt="First slide">
+                <img class="d-block w-100" src="../imagenes/carusel1.png" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://static.wixstatic.com/media/f5d2f4_0f78ab3c8b3f4b50a5b1981ae82b2748~mv2.jpg" alt="Second slide">
+                <img class="d-block w-100" src="../imagenes/carusel2.png" alt="Second slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://conmatindia.com/wp-content/uploads/2018/01/900X400.jpg" alt="Third slide">
+                <img class="d-block w-100" src="../imagenes/carusel3.png" alt="Third slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExample1" role="button" data-slide="prev">
