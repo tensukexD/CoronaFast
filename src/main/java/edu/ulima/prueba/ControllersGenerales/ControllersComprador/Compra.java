@@ -145,7 +145,7 @@ public class Compra {
             orden.setCantidad(cantidad);
             orden.setEstado(estado);
             orden.setTotal(precioProducto);
-            String link4="http://localhost:8080/RevisarOrdenes/ordenes/agregar/";
+            String link4="http://coronafast.herokuapp.com/RevisarOrdenes/ordenes/agregar/";
             rest4.postForObject(link4, orden, OrdenCompra.class);
             
         }
