@@ -158,7 +158,10 @@ public class Compra {
        rest5.put(link5, comprador, Comprador.class);
         return "redirect:/CarritoCompras/";
     }
-    return "redirect:/CarritoCompras/";
+    else{
+        return "redirect:/errorStock/";
+    }
+   
     }
 
 
