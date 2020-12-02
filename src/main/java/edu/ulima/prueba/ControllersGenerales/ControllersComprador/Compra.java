@@ -151,7 +151,7 @@ public class Compra {
             orden.setEstado(estado);
             orden.setTotal(precioProducto);
             orden.setNombreTienda(producto.getNombreTienda());
-            //orden.setTelefono(datosvendedor.getTelefono());
+            orden.setTelefono(datosvendedor.getBody().getTelefono());
             orden.setNombreComprador(comprador.getNombre());
             orden.setTelefonoComprador(comprador.getTelefono());
             orden.setDistritoComprador(comprador.getDistrito());
