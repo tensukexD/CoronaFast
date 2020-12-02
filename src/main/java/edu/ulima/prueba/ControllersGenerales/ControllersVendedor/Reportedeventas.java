@@ -53,8 +53,6 @@ public class Reportedeventas {
         
         if(filtrote.equals("neutral")){
             for(OrdenCompra i : ordenesCompra){
-               
-                   
                     total=i.getTotal()+total;
                     cantidad=i.getCantidad()+cantidad;
                 }

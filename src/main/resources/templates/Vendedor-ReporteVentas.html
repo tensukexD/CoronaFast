@@ -139,16 +139,17 @@
                 <td th:text="'S/. '+${l.total}">5</td>
 
                 <td th:text="${l.fechaCompra}">01/01/2019</td>
-                <td th:text="${l.nombreTienda}">el pepe</td>
+                <td th:text="${l.nombreComprador}">el pepe</td>
                 
             </tr>
 
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td scope="row" style="padding-right: 0px"> </td>
+              <td> <b></b> </td>
+              <td><b th:text="'Cantidad: ' + ${cantidadtotal}'">5</b></td>
+              <td><b th:text="'Suma total: ' + ${total}'">14</b></td>
+              <td> </td>
+              <td> </td>
             </tr>
 
     </table>
