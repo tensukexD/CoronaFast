@@ -133,13 +133,13 @@
       <!--Cuerpo-->
 
             <tr th:each="l : ${ordenesCompra}">
-                <td scope="row" style="padding-right: 0px"> <img src="https://mercafree.com/wp-content/uploads/2020/04/gaseosa_coca_cola_original-46082.png" style="max-width: 100px;"> </td>
-                <td>Coca Cola de 500ml</td>
-                <td>2</td>
-                <td>5</td>
+                <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
+                <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
+                <td th:text="${l.cantidad}">2</td>
+                <td th:text="'$'+${l.total}">5</td>
 
-                <td>01/01/2019</td>
-                <td>el pepe</td>
+                <td th:text="${l.fechaCompra}">01/01/2019</td>
+                <td th:text="${l.nombreTienda}">el pepe</td>
                 
             </tr>
     </table>
