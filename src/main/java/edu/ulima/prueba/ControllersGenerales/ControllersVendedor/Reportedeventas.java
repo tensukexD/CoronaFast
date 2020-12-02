@@ -30,7 +30,7 @@ public class Reportedeventas {
     Date hasta;
     @GetMapping(value="/")
     public String Retornarpag(Model model,HttpServletRequest req){
-        float total=0;
+        /*float total=0;
         int cantidad=0;
         RestTemplate rest = new RestTemplate();
 
@@ -50,7 +50,7 @@ public class Reportedeventas {
         ordenesCompra = Arrays.asList(listadeordenes.getBody()); 
 
         
-        /*
+        
         if(filtrote.equals("neutral")){
             for(OrdenCompra i : ordenesCompra){
                
