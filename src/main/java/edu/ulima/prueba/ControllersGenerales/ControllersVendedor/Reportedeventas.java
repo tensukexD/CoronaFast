@@ -65,12 +65,13 @@ public class Reportedeventas {
             }
         else {
             for(OrdenCompra i : ordenesCompra){
+                Date date=null;
                 try{
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = df.parse(i.getFechaCompra());
+                date = df.parse(i.getFechaCompra());
                 }
-                catch{
-                    Date date=null;
+                catch(Exception e){
+                    
                 }
                 if(date.before(hasta) && date.after(desde)){
                     ordenesCompraActualizado.add(i);
