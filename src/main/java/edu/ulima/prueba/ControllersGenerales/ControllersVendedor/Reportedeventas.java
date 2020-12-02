@@ -63,11 +63,16 @@ public class Reportedeventas {
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
             }
-        else {
+        /*else {
             for(OrdenCompra i : ordenesCompra){
                 Date date=null;
+                try{
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 date = df.parse(i.getFechaCompra());
+                }
+                catch(Exception e){
+                    
+                }
                 if(date.before(hasta) && date.after(desde)){
                     ordenesCompraActualizado.add(i);
                     total=i.getTotal()+total;
@@ -78,7 +83,7 @@ public class Reportedeventas {
             model.addAttribute("ordenesCompra", ordenesCompraActualizado);
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
-        }
+        }*/
         return "Vendedor-ReporteVentas";
 
     }
