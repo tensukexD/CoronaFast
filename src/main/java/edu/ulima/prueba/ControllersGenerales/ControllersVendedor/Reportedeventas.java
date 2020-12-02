@@ -63,7 +63,7 @@ public class Reportedeventas {
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
             }
-        else {
+        /*else {
             for(OrdenCompra i : ordenesCompra){
                 Date date=null;
                 try{
@@ -83,7 +83,7 @@ public class Reportedeventas {
             model.addAttribute("ordenesCompra", ordenesCompraActualizado);
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
-        }
+        }*/
         return "Vendedor-ReporteVentas";
 
     }
