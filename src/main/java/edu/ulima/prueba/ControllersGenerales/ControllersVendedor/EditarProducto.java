@@ -39,7 +39,6 @@ public class EditarProducto {
         producto.setImagen(imagen);
         producto.setPrecio(Float.parseFloat(precio));
         producto.setCantStock(Integer.parseInt(cantStock));
-
         producto.setDistrito(datostienda.getBody().getDistrito());
         producto.setNombreTienda(datostienda.getBody().getNombreTienda());
 
