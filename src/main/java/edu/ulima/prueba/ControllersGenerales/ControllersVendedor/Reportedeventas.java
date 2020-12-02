@@ -108,7 +108,8 @@ public class Reportedeventas {
             desde=desdefecha;
             filtrote="noesneutral";
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             fechaHasta = LocalDate.parse(hasta, formatter);  
             fechaDesde = LocalDate.parse(desde, formatter);
             System.out.println("llegoaca? no creo");
