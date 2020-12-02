@@ -61,8 +61,8 @@ public class Reportedeventas {
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
             }
-        /*else {
-            for(OrdenCompra i : ordenesCompra){
+        else {
+            /*for(OrdenCompra i : ordenesCompra){
                 Date date=null;
                 try{
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -76,12 +76,12 @@ public class Reportedeventas {
                     total=i.getTotal()+total;
                     cantidad=i.getCantidad()+cantidad;
                 }
-            }
+            }*/
             filtrote="neutral";
             model.addAttribute("ordenesCompra", ordenesCompraActualizado);
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
-        }*/
+        }
         return "Vendedor-ReporteVentas";
 
     }
