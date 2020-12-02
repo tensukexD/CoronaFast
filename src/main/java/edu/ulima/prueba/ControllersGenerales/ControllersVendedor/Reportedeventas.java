@@ -66,13 +66,8 @@ public class Reportedeventas {
         else {
             for(OrdenCompra i : ordenesCompra){
                 Date date=null;
-                try{
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 date = df.parse(i.getFechaCompra());
-                }
-                catch(Exception e){
-                    
-                }
                 if(date.before(hasta) && date.after(desde)){
                     ordenesCompraActualizado.add(i);
                     total=i.getTotal()+total;
