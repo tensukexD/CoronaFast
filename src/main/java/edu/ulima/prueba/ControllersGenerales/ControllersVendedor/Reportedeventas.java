@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +31,8 @@ public class Reportedeventas {
     String filtrote="neutral";
     String desde;
     String hasta;
+    LocalDate fechaHasta;
+    LocalDate fechaDesde;
     @GetMapping(value="/")
     public String Retornarpag(Model model,HttpServletRequest req){
         float total=0;
@@ -57,26 +62,25 @@ public class Reportedeventas {
                     cantidad=i.getCantidad()+cantidad;
                 }
             
-            model.addAttribute("ordenesCompra", ordenesCompra);
-            model.addAttribute("total", total);
-            model.addAttribute("cantidadtotal", cantidad);
+                model.addAttribute("ordenesCompra", ordenesCompra);
+                model.addAttribute("total", total);
+                model.addAttribute("cantidadtotal", cantidad);
             }
         else {
-            /*for(OrdenCompra i : ordenesCompra){
-                Date date=null;
-                try{
-                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                date = df.parse(i.getFechaCompra());
-                }
-                catch(Exception e){
-                    
-                }
-                if(date.before(hasta) && date.after(desde)){
+            for(OrdenCompra i : ordenesCompra){
+                //hasta = 11/11/2020 desde = 12/12/2020
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate fechaOrden = LocalDate.parse(i.getFechaCompra(), formatter);  
+                if(fechaOrden.isAfter(fechaDesde) && fechaOrden.isBefore(fechaHasta)){
+
                     ordenesCompraActualizado.add(i);
-                    total=i.getTotal()+total;
-                    cantidad=i.getCantidad()+cantidad;
                 }
-            }*/
+                
+
+
+             
+            }
             filtrote="neutral";
             model.addAttribute("ordenesCompra", ordenesCompraActualizado);
             model.addAttribute("total", total);
@@ -87,10 +91,15 @@ public class Reportedeventas {
     }
 
     @RequestMapping(value="/filtrar" , method=RequestMethod.POST)
-        public String processForm(  String  desdefecha, String  hastafecha) {
+        public String processForm(String  desdefecha, String  hastafecha) {
             hasta=hastafecha;
             desde=desdefecha;
             filtrote="noesneutral";
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            fechaHasta = LocalDate.parse(hasta, formatter);  
+            fechaDesde = LocalDate.parse(desde, formatter);
+
             return "redirect:/Reportedeventas/";
     }
 }

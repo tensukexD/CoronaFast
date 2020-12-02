@@ -145,7 +145,7 @@ public class Compra {
             orden.setNota(notasadicionales);
             //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd"); "dd/MM/yyyy"
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-             String fecha =sdf.format(new Date());
+            String fecha =sdf.format(new Date());
             orden.setFechaCompra(fecha);
             orden.setCantidad(cantidad);
             orden.setEstado(estado);
