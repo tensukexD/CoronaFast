@@ -1,4 +1,4 @@
-package edu.ulima.prueba.ControllersGenerales.ControllersVendedor;
+/*package edu.ulima.prueba.ControllersGenerales.ControllersVendedor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,8 @@ import edu.ulima.prueba.model.OrdenCompra;
 import edu.ulima.prueba.model.Producto;
 import edu.ulima.prueba.model.Tienda;
 
-@Controller
+
+@Controller 
 @RequestMapping("/Reportedeventas")
 public class Reportedeventas {
     String filtrote="neutral";
@@ -64,7 +65,7 @@ public class Reportedeventas {
             }
         else {
             for(OrdenCompra i : ordenesCompra){
-                DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = new Date();
                 date = df.parse(i.getFechaCompra());
                 if(date.before(hasta) && date.after(desde)){
@@ -91,8 +92,7 @@ public class Reportedeventas {
     }
 }
 
-
-
+*/
 
 
 
