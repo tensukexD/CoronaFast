@@ -22,7 +22,7 @@ public class Producto {
     private String categoria;
     private float precio;
     private int cantStock;
-    private float puntuacion;
+  
     private String distrito;
     private String nombreTienda;
 }

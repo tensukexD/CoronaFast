@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import edu.ulima.prueba.model.Comprador;
 import edu.ulima.prueba.model.OrdenCompra;
 import edu.ulima.prueba.model.Producto;
-
+import edu.ulima.prueba.model.Vendedor;
 @Controller
 @RequestMapping("/PagodePedido")
 public class Compra {
@@ -130,7 +130,9 @@ public class Compra {
                 nuevoproducto.setDistrito(producto.getDistrito());
                 nuevoproducto.setNombreTienda(producto.getNombreTienda());
                 rest3.put(link3, nuevoproducto, Producto.class);
-            
+                RestTemplate rest6=new RestTemplate();
+                String link6="http://coronafast.herokuapp.com/revisarVendedores/vendedores/seleccionar/"+producto.getIdUsuario();
+                ResponseEntity<Vendedor>datosvendedor=rest2.getForEntity(link2,Vendedor.class); 
             ///CREACION ORDEN DE Compra//
             OrdenCompra orden=new OrdenCompra();
             RestTemplate rest4=new RestTemplate();
@@ -138,13 +140,24 @@ public class Compra {
             orden.setIdUsuarioComprador(idcomprador);
             orden.setDireccionexacta(direccionexacta);
             orden.setIdProducto(carrito.get(i));
+            orden.setImagen(producto.getImagen());
+            orden.setNombreProducto(producto.getNombreProducto());
             orden.setNota(notasadicionales);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd"); "dd/MM/yyyy"
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
              String fecha =sdf.format(new Date());
             orden.setFechaCompra(fecha);
             orden.setCantidad(cantidad);
             orden.setEstado(estado);
             orden.setTotal(precioProducto);
+            orden.setNombreTienda(producto.getNombreTienda());
+            orden.setTelefono(datosvendedor.getTelefono());
+            orden.setNombreComprador(comprador.getNombre());
+            orden.setTelefonoComprador(comprador.getTelefono());
+            orden.setDistritoComprador(comprador.getDistrito());
+            
+
+
             String link4="http://coronafast.herokuapp.com/RevisarOrdenes/ordenes/agregar/";
             rest4.postForObject(link4, orden, OrdenCompra.class);
             
@@ -156,7 +169,7 @@ public class Compra {
         RestTemplate rest5=new RestTemplate();
        String link5= "http://coronafast.herokuapp.com/revisarCompradores/compradores/actualizar/"+userid;
        rest5.put(link5, comprador, Comprador.class);
-        return "redirect:/CarritoCompras/";
+        return "redirect:/ConfirmacionCompra/";
     }
     else{
         return "redirect:/errorStock/";

@@ -19,6 +19,6 @@ public class Tienda {
     private String distrito;
     private String direccion;
     private String telefono;
-    private OrdenCompra historialVentas[];
     
+   
 }

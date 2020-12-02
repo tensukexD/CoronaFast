@@ -9,6 +9,6 @@ import lombok.Data;
 @Table(name="TBVENDEDOR")
 public class Vendedor extends Usuario {
     
-    private OrdenCompra historialVentas[];
+  
     
 }

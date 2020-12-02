@@ -80,6 +80,11 @@ public class CarritoCompras {
         req.getSession().setAttribute("preciototalCompra", inputotal);
         String[] prueba1=(String[])req.getSession().getAttribute("cantidadproductos");
         
+        for (String i : quantity){
+            if(i.equalsIgnoreCase("0")){
+                return "redirect:/errorStock/";
+            }
+        }
         return "redirect:/PagodePedido/";
     }
     
