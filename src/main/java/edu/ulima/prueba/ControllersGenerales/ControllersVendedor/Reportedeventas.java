@@ -26,8 +26,8 @@ import edu.ulima.prueba.model.Tienda;
 @RequestMapping("/Reportedeventas")
 public class Reportedeventas {
     String filtrote="neutral";
-    Date desde;
-    Date hasta;
+    String desde;
+    String hasta;
     @GetMapping(value="/")
     public String Retornarpag(Model model,HttpServletRequest req){
         float total=0;
