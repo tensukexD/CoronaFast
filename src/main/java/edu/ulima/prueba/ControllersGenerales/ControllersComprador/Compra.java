@@ -132,7 +132,7 @@ public class Compra {
                 rest3.put(link3, nuevoproducto, Producto.class);
                 RestTemplate rest2=new RestTemplate();
                 String link6="http://coronafast.herokuapp.com/revisarVendedores/vendedores/seleccionar/"+producto.getIdUsuario();
-                ResponseEntity<Vendedor>datosvendedor=rest2.getForEntity(link2,Vendedor.class); 
+                ResponseEntity<Vendedor>datosvendedor=rest2.getForEntity(link6,Vendedor.class); 
             ///CREACION ORDEN DE Compra//
             OrdenCompra orden=new OrdenCompra();
             RestTemplate rest4=new RestTemplate();
