@@ -92,6 +92,18 @@ public class Reportedeventas {
 
     @RequestMapping(value="/filtrar" , method=RequestMethod.POST)
         public String processForm(String  desdefecha, String  hastafecha) {
+            System.out.println(desdefecha);
+            System.out.println(desdefecha);
+            System.out.println(desdefecha);
+            System.out.println(desdefecha);
+            System.out.println(desdefecha);
+            System.out.println(hastafecha);
+            System.out.println(hastafecha);
+            System.out.println(hastafecha);
+            System.out.println(hastafecha);
+            System.out.println(hastafecha);
+            System.out.println(hastafecha);
+
             hasta=hastafecha;
             desde=desdefecha;
             filtrote="noesneutral";
@@ -99,7 +111,11 @@ public class Reportedeventas {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             fechaHasta = LocalDate.parse(hasta, formatter);  
             fechaDesde = LocalDate.parse(desde, formatter);
-
+            System.out.println("llegoaca? no creo");
+            System.out.println("llegoaca? no creo");
+            System.out.println("llegoaca? no creo");
+            System.out.println("llegoaca? no creo");
+            System.out.println(fechaHasta);
             return "redirect:/Reportedeventas/";
     }
 }
