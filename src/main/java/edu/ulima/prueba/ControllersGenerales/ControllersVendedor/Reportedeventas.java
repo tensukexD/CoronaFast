@@ -50,7 +50,7 @@ public class Reportedeventas {
         ordenesCompra = Arrays.asList(listadeordenes.getBody()); 
 
         
-        
+        /*
         if(filtrote.equals("neutral")){
             for(OrdenCompra i : ordenesCompra){
                
@@ -63,7 +63,7 @@ public class Reportedeventas {
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
             }
-        /*else {
+        else {
             for(OrdenCompra i : ordenesCompra){
                 Date date=null;
                 try{
