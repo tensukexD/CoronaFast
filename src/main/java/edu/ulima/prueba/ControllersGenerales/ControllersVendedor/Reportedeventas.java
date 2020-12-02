@@ -49,7 +49,7 @@ public class Reportedeventas {
         ResponseEntity<OrdenCompra[]>listadeordenes=rest2.getForEntity("https://coronafast.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid,OrdenCompra[].class);
         ordenesCompra = Arrays.asList(listadeordenes.getBody()); 
 
-        /*
+        
         
         if(filtrote.equals("neutral")){
             for(OrdenCompra i : ordenesCompra){
@@ -83,7 +83,7 @@ public class Reportedeventas {
             model.addAttribute("ordenesCompra", ordenesCompraActualizado);
             model.addAttribute("total", total);
             model.addAttribute("cantidadtotal", cantidad);
-        }*/
+        }
         return "Vendedor-ReporteVentas";
 
     }
