@@ -65,7 +65,7 @@ public class Reportedeventas {
             }
         else {
             for(OrdenCompra i : ordenesCompra){
-                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = new Date();
                 date = df.parse(i.getFechaCompra());
                 if(date.before(hasta) && date.after(desde)){
