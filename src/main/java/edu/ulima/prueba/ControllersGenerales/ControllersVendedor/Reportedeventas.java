@@ -30,7 +30,7 @@ public class Reportedeventas {
     Date hasta;
     @GetMapping(value="/")
     public String Retornarpag(Model model,HttpServletRequest req){
-        /*float total=0;
+        float total=0;
         int cantidad=0;
         RestTemplate rest = new RestTemplate();
 
@@ -43,7 +43,7 @@ public class Reportedeventas {
         if(tipo.equals("comprador")){
             return "redirect:/PaginaPrincipalComprador/";
         }
-        List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
+        /*List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
         List<OrdenCompra> ordenesCompraActualizado = new ArrayList<OrdenCompra>();
         RestTemplate rest2=new RestTemplate();
         ResponseEntity<OrdenCompra[]>listadeordenes=rest2.getForEntity("https://proyectowebfinal1.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid,OrdenCompra[].class);
