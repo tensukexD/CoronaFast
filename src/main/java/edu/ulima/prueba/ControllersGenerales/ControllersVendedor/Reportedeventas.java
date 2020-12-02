@@ -43,13 +43,13 @@ public class Reportedeventas {
         if(tipo.equals("comprador")){
             return "redirect:/PaginaPrincipalComprador/";
         }
-        /*List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
+        List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
         List<OrdenCompra> ordenesCompraActualizado = new ArrayList<OrdenCompra>();
         RestTemplate rest2=new RestTemplate();
         ResponseEntity<OrdenCompra[]>listadeordenes=rest2.getForEntity("https://proyectowebfinal1.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid,OrdenCompra[].class);
         ordenesCompra = Arrays.asList(listadeordenes.getBody()); 
 
-        
+        /*
         
         if(filtrote.equals("neutral")){
             for(OrdenCompra i : ordenesCompra){
