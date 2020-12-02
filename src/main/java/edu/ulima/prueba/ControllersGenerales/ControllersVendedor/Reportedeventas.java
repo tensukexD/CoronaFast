@@ -46,7 +46,7 @@ public class Reportedeventas {
         List<OrdenCompra> ordenesCompra = new ArrayList<OrdenCompra>();
         List<OrdenCompra> ordenesCompraActualizado = new ArrayList<OrdenCompra>();
         RestTemplate rest2=new RestTemplate();
-        ResponseEntity<OrdenCompra[]>listadeordenes=rest2.getForEntity("https://proyectowebfinal1.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid,OrdenCompra[].class);
+        ResponseEntity<OrdenCompra[]>listadeordenes=rest2.getForEntity("https://coronafast.herokuapp.com/RevisarOrdenes/ordenesVendedor/mostrar/"+userid,OrdenCompra[].class);
         ordenesCompra = Arrays.asList(listadeordenes.getBody()); 
 
         /*
