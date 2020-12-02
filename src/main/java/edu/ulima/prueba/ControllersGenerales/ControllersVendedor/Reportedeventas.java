@@ -1,4 +1,4 @@
-/*package edu.ulima.prueba.ControllersGenerales.ControllersVendedor;
+package edu.ulima.prueba.ControllersGenerales.ControllersVendedor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,7 +65,7 @@ public class Reportedeventas {
             }
         else {
             for(OrdenCompra i : ordenesCompra){
-                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
                 Date date = new Date();
                 date = df.parse(i.getFechaCompra());
                 if(date.before(hasta) && date.after(desde)){
@@ -92,7 +92,7 @@ public class Reportedeventas {
     }
 }
 
-*/
+
 
 
 

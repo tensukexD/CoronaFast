@@ -14,7 +14,6 @@ public class Comprador extends Usuario {
     private String distrito;
     private String direccion;
     private ArrayList<Long> tiendasFavoritas = new ArrayList<Long>();
-  
     private ArrayList<Long> carritoCompras = new ArrayList<Long>();
     private ArrayList<Long> listaDeseados = new ArrayList<Long>();
     private String categoriaPreferida;
