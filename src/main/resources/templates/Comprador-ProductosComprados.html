@@ -128,8 +128,8 @@
             <tr th:each="l : ${ordenesCompra}">
                 <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
                 <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
-                <td th:text="${l.cantidad}+'Unidades'">2</td>
-                <td th:text="'$'+${l.total}">S/.5</td>
+                <td th:text="${l.cantidad}+' Unidades'">2</td>
+                <td th:text="'S/. '+${l.total}">S/.5</td>
                 <td th:text="${l.estado}">Pendiente</td>
                 <td th:text="${l.fechaCompra}">01/01/2020</td>
                 <td th:text="${l.nombreTienda}">el pepe</td>
