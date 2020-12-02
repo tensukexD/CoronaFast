@@ -86,7 +86,6 @@ public ResponseEntity<Void> agregarProducto(@RequestBody Producto newProducto,
             current.setImagen(producto.getImagen());
             current.setPrecio(producto.getPrecio());
             current.setCantStock(producto.getCantStock());
-            current.setPuntuacion(producto.getPuntuacion());
             current.setDistrito(producto.getDistrito());
             current.setNombreTienda(producto.getNombreTienda());
             lRepository.save(current);

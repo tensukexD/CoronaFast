@@ -64,7 +64,6 @@ public class EditarDatosvendedor {
             productodistrito.setCategoria(arrProduc[i].getCategoria());
             productodistrito.setPrecio(arrProduc[i].getPrecio()); 
             productodistrito.setCantStock(arrProduc[i].getCantStock());
-            productodistrito.setPuntuacion(arrProduc[i].getPuntuacion());
             productodistrito.setNombreTienda(razonSocial);
             productodistrito.setDistrito(distrito);
             rest3.put(link3, productodistrito, Producto.class);

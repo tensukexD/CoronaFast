@@ -130,7 +130,7 @@ public class Compra {
                 nuevoproducto.setDistrito(producto.getDistrito());
                 nuevoproducto.setNombreTienda(producto.getNombreTienda());
                 rest3.put(link3, nuevoproducto, Producto.class);
-                RestTemplate rest6=new RestTemplate();
+                RestTemplate rest2=new RestTemplate();
                 String link6="http://coronafast.herokuapp.com/revisarVendedores/vendedores/seleccionar/"+producto.getIdUsuario();
                 ResponseEntity<Vendedor>datosvendedor=rest2.getForEntity(link2,Vendedor.class); 
             ///CREACION ORDEN DE Compra//
@@ -151,7 +151,7 @@ public class Compra {
             orden.setEstado(estado);
             orden.setTotal(precioProducto);
             orden.setNombreTienda(producto.getNombreTienda());
-            orden.setTelefono(datosvendedor.getTelefono());
+            //orden.setTelefono(datosvendedor.getTelefono());
             orden.setNombreComprador(comprador.getNombre());
             orden.setTelefonoComprador(comprador.getTelefono());
             orden.setDistritoComprador(comprador.getDistrito());
