@@ -86,7 +86,7 @@ public class Reportedeventas {
 
     }
 
-    @RequestMapping(value="/" , method=RequestMethod.POST)
+    @RequestMapping(value="/filtrar" , method=RequestMethod.POST)
         public String processForm(  String  desdefecha, String  hastafecha) {
             hasta=hastafecha;
             desde=desdefecha;
