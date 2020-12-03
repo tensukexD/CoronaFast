@@ -72,7 +72,7 @@ public class Reportedeventas {
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate fechaOrden = LocalDate.parse(i.getFechaCompra(), formatter);  
-                if((fechaOrden.isAfter(fechaDesde) && fechaOrden.isBefore(fechaHasta))|| fechaOrden.isEqual(fechaDesde)||fechaOrden.isEqual(fechaHasta){
+                if((fechaOrden.isAfter(fechaDesde) && fechaOrden.isBefore(fechaHasta))|| fechaOrden.isEqual(fechaDesde)||fechaOrden.isEqual(fechaHasta)){
                     total=i.getTotal()+total;
                     cantidad=i.getCantidad()+cantidad;
                     ordenesCompraActualizado.add(i);
