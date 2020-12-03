@@ -83,7 +83,9 @@ function agregarPrecios(){
     precioFinal=subTotalNumero+precioEnvio;
     console.log(precioFinal);
     subtotal.innerText = subTotalNumero.toString();
-    envio.innerText = precioEnvio.toString();
+    if (arregloCarrito.length != 0){
+        envio.innerText = precioEnvio.toString();
+    }
     total.innerText = precioFinal.toString();
     inputdeltotal.value=precioFinal.toString();
 }
