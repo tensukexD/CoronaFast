@@ -80,11 +80,14 @@ function agregarPrecios(){
         subTotalNumero+=(parseFloat(cantidad.value)*parseFloat(productosCarrito[i].precio));
         precioTotal.innerText = "$"+(parseFloat(cantidad.value)*parseFloat(productosCarrito[i].precio)).toString();
     }
-    precioFinal=subTotalNumero+precioEnvio;
+    
     console.log(precioFinal);
     subtotal.innerText = subTotalNumero.toString();
     if (arregloCarrito.length != 0){
         envio.innerText = precioEnvio.toString();
+        precioFinal=subTotalNumero+precioEnvio;
+    }else{
+        envio.innerText = "0";
     }
     total.innerText = precioFinal.toString();
     inputdeltotal.value=precioFinal.toString();
