@@ -173,17 +173,19 @@ public ResponseEntity<Void> eliminarCarrito(@PathVariable("idComprador") Long id
     comprador=l.get();
 
     ArrayList<Long> carrito = comprador.getCarritoCompras();
-
+    System.out.println("esto sale de id producto"+String.valueOf(idProducto));
+    System.out.println("esto sale de id producto"+String.valueOf(idProducto));
+    System.out.println("esto sale de id producto"+String.valueOf(idProducto));
+    System.out.println("esto sale de id producto"+String.valueOf(idProducto));
+    System.out.println("esto sale de id producto"+String.valueOf(idProducto));
     for(int i=0; i<carrito.size(); i++){
-        System.out.println(carrito.get(i));
-        System.out.println(idProducto);
-        System.out.println(carrito.size());
+      
         if(String.valueOf(carrito.get(i)).equals(String.valueOf(idProducto))){
             carrito.remove(i);
-            System.out.println(carrito.size());
+           
             
         }
-        System.out.println(carrito.size());
+        
     }
 
     comprador.setCarritoCompras(carrito);
