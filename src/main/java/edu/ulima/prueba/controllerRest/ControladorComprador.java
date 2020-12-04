@@ -181,14 +181,15 @@ public ResponseEntity<Void> eliminarCarrito(@PathVariable("idComprador") Long id
         if(String.valueOf(carrito.get(i)).equals(String.valueOf(idProducto))){
             carrito.remove(i);
             System.out.println(carrito.size());
+            comprador.setCarritoCompras(carrito);
+
+            lRepository.save(comprador);
+            return new ResponseEntity<Void>(HttpStatus.OK);
         }
         System.out.println(carrito.size());
     }
 
-    comprador.setCarritoCompras(carrito);
-
-    lRepository.save(comprador);
-    return new ResponseEntity<Void>(HttpStatus.OK);
+    
 }
 
 @RequestMapping(value = "compradores/{idComprador}/eliminarTienda/{idTienda}", method = RequestMethod.PUT)
