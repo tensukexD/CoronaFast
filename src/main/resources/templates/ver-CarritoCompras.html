@@ -136,7 +136,7 @@
                           <td class="col-sm-1 col-md-1 text-center"><span th:id="'precioProductoTotal' + ${l.idProducto}" ></span></td>
                         </div>
                         <td class="col-sm-1 col-md-1">
-                          <form th:action="/CarritoCompras/quitar/"  method="POST" id="quitarForm">
+                          <form action="/CarritoCompras/quitar/"  method="POST" id="quitarForm">
                             <input type="hidden" name="idProducto" th:value="${l.idProducto}">
                             <button type="submit" class="btn btn-danger" form="quitarForm">
                               <span class="glyphicon glyphicon-remove"></span> Quitar
