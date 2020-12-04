@@ -60,7 +60,7 @@ public class CarritoCompras {
     }
 
     @PostMapping(value="/quitar/{id}")
-    public String quitarProducto( HttpServletRequest req,Model model, @PathVariable("id") Long idProducto){
+    public String quitarProducto( HttpServletRequest req,Model model, @PathVariable("id") Long idProducto, Long id){
 
         String userid = (String) req.getSession().getAttribute("idingresado");
 
@@ -73,9 +73,19 @@ public class CarritoCompras {
         System.out.println(idProducto);
         System.out.println(idProducto);
 
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+        System.out.println(id);
+
+
         RestTemplate rest = new RestTemplate();
 
-        String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+idProducto;
+        String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+id;
 
         rest.put(link,null);
 
