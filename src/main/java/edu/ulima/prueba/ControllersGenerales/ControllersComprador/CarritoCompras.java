@@ -60,7 +60,7 @@ public class CarritoCompras {
     }
 
     @PostMapping(value="/quitar/")
-    public String quitarProducto( HttpServletRequest req,Model model, String idProducto){
+    public String quitarProducto( HttpServletRequest req,Model model, Long idProducto){
 
         String userid = (String) req.getSession().getAttribute("idingresado");
 
