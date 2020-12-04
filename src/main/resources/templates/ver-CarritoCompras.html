@@ -114,16 +114,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="l : ${productos}" >
-                      <td class="col-sm-1 col-md-1">
-                        <div>
-                        <form action="/CarritoCompras/quitar/"  method="POST" id="quitarForm">
-                          <input type="hidden" name="idProducto" th:value="${l.idProducto}">
-                          <button type="submit" class="btn btn-danger" form="quitarForm">
-                            <span class="glyphicon glyphicon-remove"></span> Quitar
-                          </button>
-                        </form>
-                        </div>
-                      </td>
+                      
                         <td class="col-sm-8 col-md-6" th:id="'producto' + ${l.idProducto}">
                         <div class="media">
                             <a class="thumbnail pull-left" href="#"> <img class="media-object" th:src="${l.imagen}" style="width: 72px; height: 72px; padding-right: 5px"> </a>
@@ -145,7 +136,14 @@
                           
                           <td class="col-sm-1 col-md-1 text-center"><span th:id="'precioProductoTotal' + ${l.idProducto}" ></span></td>
                         </div>
-                        
+                        <td class="col-sm-1 col-md-1">
+                          <form th:action="/CarritoCompras/quitar/{y} (y=${l.idProducto})"  method="POST" id="quitarForm">
+                            <input type="hidden" name="idProducto" th:value="${l.idProducto}">
+                            <button type="submit" class="btn btn-danger" form="quitarForm">
+                              <span class="glyphicon glyphicon-remove"></span> Quitar
+                            </button>
+                          </form>
+                        </td>
                     </tr>
                     <tr>
                         <td>   </td>

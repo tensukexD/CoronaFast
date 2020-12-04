@@ -59,8 +59,8 @@ public class CarritoCompras {
         return "ver-CarritoCompras";
     }
 
-    @PostMapping(value="/quitar/")
-    public String quitarProducto( HttpServletRequest req,Model model, Long idProducto){
+    @PostMapping(value="/quitar/{idProducto}")
+    public String quitarProducto( HttpServletRequest req,Model model, @PathVariable("idProducto") Long idProducto){
 
         String userid = (String) req.getSession().getAttribute("idingresado");
 
