@@ -64,6 +64,15 @@ public class CarritoCompras {
 
         String userid = (String) req.getSession().getAttribute("idingresado");
 
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+        System.out.println(idProducto);
+
         RestTemplate rest = new RestTemplate();
 
         String link = "http://coronafast.herokuapp.com/revisarCompradores/compradores/"+userid+"/eliminarCarrito/"+idProducto;
