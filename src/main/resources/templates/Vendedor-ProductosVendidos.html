@@ -105,6 +105,7 @@
 
       <!--Cabecera-->
             <tr class="header">
+                <th >Id compra</th>
                 <th >Imagen</th>
                 <th >Nombre del producto</th>
                 <th >Cantidad</th>
@@ -122,6 +123,7 @@
       <!--Cuerpo-->
 
             <tr th:each="l : ${ordenesCompra}">
+                <td th:text="${l.idTransaccion}">Coca Cola de 500ml</td>
                 <td scope="row" style="padding-right: 0px"> <img th:src="${l.imagen}" style="max-width: 100px;"> </td>
                 <td th:text="${l.nombreProducto}">Coca Cola de 500ml</td>
                 <td th:text="${l.cantidad} + ' Unidades'">2</td>
